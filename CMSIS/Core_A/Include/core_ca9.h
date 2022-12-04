@@ -21,14 +21,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- /*
-  * This file exists for compatibility reasons only
-  */
 
 
 #ifndef __CORE_CA9_H
 #define __CORE_CA9_H
 
+#define __CORTEX_A           9U    /*!< \brief Cortex-A9 Core */
+
+#if defined __CHECK_DEVICE_DEFINES
+  #ifndef __CA7_REV
+    #define __CA7_REV              0x0000U
+    #warning "__CA7_REV not defined in device header file; using default!"
+  #endif
+#endif
 
 #include "armv7a.h"
 
