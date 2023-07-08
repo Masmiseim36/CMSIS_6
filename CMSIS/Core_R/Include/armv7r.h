@@ -449,6 +449,14 @@ typedef union
   #define VICPCELLID_VICPCellID_Msk       (0xFFU << VICPCELLID_VICPCellID_Pos)
 #endif /* (__VIC_PRESENT == 1U) || defined(DOXYGEN) */
 
+#if (__GIC_PRESENT == 1U) || defined(DOXYGEN)
+  #include "../../Core/gic_v20.h"
+#endif /*  (__GIC_PRESENT == 1U) || defined(DOXYGEN) */
+
+#if (__GIC_PRESENT == 1U) && (__VIC_PRESENT == 1U)
+  #error "Only one Interrupt Controller can be used"
+#endif
+
 #ifdef __cplusplus
  }
 #endif
