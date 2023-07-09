@@ -26,7 +26,7 @@
 #define __CMSIS_ARMCC_H
 
 // Include the generic settigs:
-#include "../../Core/cmsis_generic_armcc.h"
+#include "cmsis_generic_armcc.h"
 
 /* #########################  Startup and Lowlevel Init  ######################## */
 

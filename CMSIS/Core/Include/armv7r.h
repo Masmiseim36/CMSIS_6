@@ -147,6 +147,15 @@
     #warning "__VIC_PRESENT not defined in device header file; using default!"
   #endif
 
+  #ifndef __GIC_PRESENT
+    #define __GIC_PRESENT             1U
+    #warning "__GIC_PRESENT not defined in device header file; using default!"
+  #endif
+
+  #if (__GIC_PRESENT == 1U) && (__VIC_PRESENT == 1U)
+    #error "Only one Interrupt Controller can be used"
+  #endif
+
   #ifndef __MPU_PRESENT
     #define __MPU_PRESENT             0U
     #warning "__MPU_PRESENT not defined in device header file; using default!"
@@ -450,12 +459,8 @@ typedef union
 #endif /* (__VIC_PRESENT == 1U) || defined(DOXYGEN) */
 
 #if (__GIC_PRESENT == 1U) || defined(DOXYGEN)
-  #include "../../Core/gic_v20.h"
+  #include "gic_v20.h"
 #endif /*  (__GIC_PRESENT == 1U) || defined(DOXYGEN) */
-
-#if (__GIC_PRESENT == 1U) && (__VIC_PRESENT == 1U)
-  #error "Only one Interrupt Controller can be used"
-#endif
 
 #ifdef __cplusplus
  }

@@ -30,7 +30,7 @@
 #define __CMSIS_ICCARM_H__
 
 // Include the generic settigs:
-#include "../../Core/cmsis_generic_iccarm.h"
+#include "cmsis_generic_iccarm.h"
 
 #ifndef __ICCARM__
   #error This file should only be compiled by ICCARM

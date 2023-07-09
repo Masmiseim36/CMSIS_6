@@ -1,7 +1,7 @@
 /**************************************************************************//**
- * @file     cmsis_compiler.h
- * @brief    CMSIS compiler generic header file
- * @version  V5.2.0
+ * @file     cmsis_armcc.h
+ * @brief    CMSIS compiler ARMCC (Arm Compiler 5) header file
+ * @version  V5.0.0
  * @date     04. December 2022
  ******************************************************************************/
 /*
@@ -22,10 +22,30 @@
  * limitations under the License.
  */
 
-#ifndef __CMSIS_COMPILER_H
-#define __CMSIS_COMPILER_H
+#ifndef __CMSIS_ARMCC_H
+#define __CMSIS_ARMCC_H
 
-#include "../../Core/cmsis_generic_compiler.h"
+// Include the generic settigs:
+#include "cmsis_generic_armcc.h"
 
-#endif /* __CMSIS_COMPILER_H */
 
+/** \brief  Get Stack Pointer
+    \return Stack Pointer
+ */
+__STATIC_INLINE __ASM uint32_t __get_SP(void)
+{
+  MOV  r0, sp
+  BX   lr
+}
+
+/** \brief  Set Stack Pointer
+    \param [in]    stack  Stack Pointer value to set
+ */
+__STATIC_INLINE __ASM void __set_SP(uint32_t stack)
+{
+  MOV  sp, r0
+  BX   lr
+}
+
+
+#endif /* __CMSIS_ARMCC_H */

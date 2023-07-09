@@ -30,7 +30,7 @@
 #pragma clang system_header   /* treat file as system include file */
 
 // Include the generic settigs:
-#include "../../Core/cmsis_generic_armclang.h"
+#include "cmsis_generic_armclang.h"
 
 /* #########################  Startup and Lowlevel Init  ######################## */
 

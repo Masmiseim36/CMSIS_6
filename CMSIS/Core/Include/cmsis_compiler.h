@@ -31,38 +31,86 @@
  * Arm Compiler 4/5
  */
 #if   defined ( __CC_ARM )
-  #include "cmsis_armcc.h"
+  #if defined __CORTEX_A
+    #include "cmsis_cortexa_armcc.h"
+  #elif defined __CORTEX_R
+    #include "cmsis_cortexr_armcc.h"
+  #elif defined __CORTEX_M
+    #include "cmsis_cortexm_armcc.h"
+  #else
+    #error "Unknown architecture"
+  #endif
 
 
 /*
  * Arm Compiler 6.6 LTM (armclang)
  */
 #elif defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050) && (__ARMCC_VERSION < 6100100)
-  #include "cmsis_armclang_ltm.h"
+  #if defined __CORTEX_A
+    #error "Core-R is not supported for this compiler"
+  #elif defined __CORTEX_R
+    #error "Core-R is not supported for this compiler"
+  #elif defined __CORTEX_M
+    #include "cmsis_corem_armclang_ltm.h"
+  #else
+    #error "Unknown architecture"
+  #endif
 
 /*
  * Arm Compiler above 6.10.1 (armclang)
  */
 #elif defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6100100)
-  #include "cmsis_armclang.h"
+  #if defined __CORTEX_A
+    #include "cmsis_corema_armclang.h"
+  #elif defined __CORTEX_R
+    #include "cmsis_corer_armclang.h"
+  #elif defined __CORTEX_M
+    #include "cmsis_corem_armclang.h"
+  #else
+    #error "Unknown architecture"
+  #endif
 
 /*
  * TI Arm Clang Compiler (tiarmclang)
  */
 #elif defined (__ti__)
-  #include "cmsis_tiarmclang.h"
+  #if defined __CORTEX_A
+    #error "Core-R is not supported for this compiler"
+  #elif defined __CORTEX_R
+    #error "Core-R is not supported for this compiler"
+  #elif defined __CORTEX_M
+    #include "cmsis_corem_tiarmclang.h"
+  #else
+    #error "Unknown architecture"
+  #endif
 
 /*
  * GNU Compiler
  */
 #elif defined ( __GNUC__ )
-  #include "cmsis_gcc.h"
+  #if defined __CORTEX_A
+    #include "cmsis_corea_gcc.h"
+  #elif defined __CORTEX_R
+    #include "cmsis_corer_gcc.h"
+  #elif defined __CORTEX_M
+    #include "cmsis_corem_gcc.h"
+  #else
+    #error "Unknown architecture"
+  #endif
 
 /*
  * IAR Compiler
  */
 #elif defined ( __ICCARM__ )
-  #include <cmsis_iccarm.h>
+  #if defined __CORTEX_A
+    #include "cmsis_corea_iccarm.h"
+  #elif defined __CORTEX_R
+    #include "cmsis_corer_iccarm.h"
+  #elif defined __CORTEX_M
+    #include "cmsis_corem_iccarm.h"
+  #else
+    #error "Unknown architecture"
+  #endif
 
 
 /*

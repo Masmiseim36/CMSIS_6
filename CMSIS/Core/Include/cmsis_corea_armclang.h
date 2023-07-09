@@ -30,7 +30,7 @@
 #pragma clang system_header   /* treat file as system include file */
 
 // Include the generic settigs:
-#include "../../Core/cmsis_generic_armclang.h"
+#include "cmsis_generic_armclang.h"
 
 
 /* ###########################  Core Function Access  ########################### */
@@ -157,7 +157,7 @@ __STATIC_FORCEINLINE void __set_FPEXC(uint32_t fpexc)
 #define __get_CP64(cp, op1, Rt, CRm)         __ASM volatile("MRRC p" # cp ", " # op1 ", %Q0, %R0, c" # CRm  : "=r" (Rt) : : "memory" )
 #define __set_CP64(cp, op1, Rt, CRm)         __ASM volatile("MCRR p" # cp ", " # op1 ", %Q0, %R0, c" # CRm  : : "r" (Rt) : "memory" )
 
-#include "cmsis_cp15.h"
+#include "armv7a_cp15.h"
 
 /** \brief  Enable Floating Point Unit
 

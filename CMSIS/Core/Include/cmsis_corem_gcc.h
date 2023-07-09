@@ -26,7 +26,7 @@
 #define __CMSIS_GCC_H
 
 // Include the generic settigs:
-#include "../../Core/cmsis_generic_gcc.h"
+#include "cmsis_generic_gcc.h"
 
 /* ignore some GCC warnings */
 #pragma GCC diagnostic push

@@ -1,5 +1,5 @@
 /**************************************************************************//**
- * @file     cmsis_cp15.h
+ * @file     armv7a_cp15.h
  * @brief    CMSIS compiler specific macros, functions, instructions
  * @version  V1.0.2
  * @date     19. December 2022

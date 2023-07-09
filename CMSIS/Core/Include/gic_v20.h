@@ -31,6 +31,8 @@
 #ifndef ARM_GIC_V20_H
 #define ARM_GIC_V20_H
 
+#include <stdint.h>
+
 /** \brief  Structure type to access the Generic Interrupt Controller Distributor (GICD)
 */
 typedef struct

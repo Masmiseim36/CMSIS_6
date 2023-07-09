@@ -26,7 +26,7 @@
 #define __CMSIS_ARMCC_H
 
 // Include the generic settigs:
-#include "../../Core/cmsis_generic_armcc.h"
+#include "cmsis_generic_armcc.h"
 
 
 /** \brief  Get CPSR (Current Program Status Register)
@@ -162,7 +162,7 @@ __STATIC_INLINE void __set_FPEXC(uint32_t fpexc)
     __ASM volatile("MCRR p" # cp ", " # op1 ", ltmp, htmp, c" # CRm); \
   } while(0)
 
-#include "cmsis_cp15.h"
+#include "armv7a_cp15.h"
 
 /** \brief  Enable Floating Point Unit
 

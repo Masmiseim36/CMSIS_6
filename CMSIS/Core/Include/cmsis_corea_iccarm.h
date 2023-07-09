@@ -30,7 +30,7 @@
 #define __CMSIS_ICCARM_H__
 
 // Include the generic settigs:
-#include "../../Core/cmsis_generic_iccarm.h"
+#include "cmsis_generic_iccarm.h"
 
 #ifndef __ICCARM__
   #error This file should only be compiled by ICCARM
@@ -75,7 +75,7 @@
   #define __set_CP64(cp, op1, Rt, CRm) \
     __ASM volatile("MCRR p" # cp ", " # op1 ", %Q0, %R0, c" # CRm  : : "r" (Rt) : "memory" )
 
-  #include "cmsis_cp15.h"
+  #include "armv7a_cp15.h"
 
 
   #if !((defined (__FPU_PRESENT) && (__FPU_PRESENT == 1U)))
@@ -160,7 +160,7 @@
   #define __set_CP64(cp, op1, Rt, CRm) \
     __ASM volatile("MCRR p" # cp ", " # op1 ", %Q0, %R0, c" # CRm  : : "r" (Rt) : "memory" )
 
-  #include "cmsis_cp15.h"
+  #include "armv7a_cp15.h"
 
 #endif   /* __ICCARM_INTRINSICS_VERSION__ == 2 */
 

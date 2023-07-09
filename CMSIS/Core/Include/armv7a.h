@@ -738,7 +738,7 @@ typedef struct
 #endif
 
 #if (__GIC_PRESENT == 1U) || defined(DOXYGEN)
-  #include "../../Core/gic_v20.h"
+  #include "gic_v20.h"
 #endif /*  (__GIC_PRESENT == 1U) || defined(DOXYGEN) */
 
 #if (__TIM_PRESENT == 1U) || defined(DOXYGEN)

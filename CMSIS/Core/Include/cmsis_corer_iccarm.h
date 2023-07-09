@@ -29,6 +29,6 @@
 #define __CMSIS_ICCARM_H__
 
 // Include the generic settigs:
-#include "../../Core/cmsis_generic_iccarm.h"
+#include "cmsis_generic_iccarm.h"
 
 #endif /* __CMSIS_ICCARM_H__ */
