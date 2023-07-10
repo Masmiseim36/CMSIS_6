@@ -1,5 +1,5 @@
 /**************************************************************************//**
- * @file     cmsis_iccarm.h
+ * @file     cmsis_iccarm_corem.h
  * @brief    CMSIS compiler ICCARM (IAR Compiler for Arm) header file
  * @version  V5.4.0
  * @date     04. December 2022
@@ -26,11 +26,11 @@
 //------------------------------------------------------------------------------
 
 
-#ifndef __CMSIS_ICCARM_H__
-#define __CMSIS_ICCARM_H__
+#ifndef __CMSIS_ICCARM_COREM_H__
+#define __CMSIS_ICCARM_COREM_H__
 
 // Include the generic settigs:
-#include "cmsis_generic_iccarm.h"
+#include "cmsis_iccarm.h"
 
 #ifndef __ICCARM__
   #error This file should only be compiled by ICCARM
@@ -461,4 +461,4 @@
 
 #define __SXTAB16_RORn(ARG1, ARG2, ARG3) __SXTAB16(ARG1, __ROR(ARG2, ARG3))
 
-#endif /* __CMSIS_ICCARM_H__ */
+#endif /* __CMSIS_ICCARM_COREM_H__ */

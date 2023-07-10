@@ -1,5 +1,5 @@
 /**************************************************************************//**
- * @file     cmsis_armclang.h
+ * @file     cmsis_armclang_corea.h
  * @brief    CMSIS compiler armclang (Arm Compiler 6) header file
  * @version  V5.5.0
  * @date     04. December 2022
@@ -24,13 +24,13 @@
 
 /*lint -esym(9058, IRQn)*/ /* disable MISRA 2012 Rule 2.4 for IRQn */
 
-#ifndef __CMSIS_ARMCLANG_H
-#define __CMSIS_ARMCLANG_H
+#ifndef __CMSIS_ARMCLANG_COREA_H
+#define __CMSIS_ARMCLANG_COREA_H
 
 #pragma clang system_header   /* treat file as system include file */
 
-// Include the generic settigs:
-#include "cmsis_generic_armclang.h"
+// Include the generic settings:
+#include "cmsis_armclang.h"
 
 
 /* ###########################  Core Function Access  ########################### */
@@ -229,4 +229,4 @@ __STATIC_INLINE void __FPU_Enable(void)
   );
 }
 
-#endif /* __CMSIS_ARMCLANG_H */
+#endif /* __CMSIS_ARMCLANG_COREA_H */

@@ -1,5 +1,5 @@
 /**************************************************************************//**
- * @file     cmsis_generic_iccarm.h
+ * @file     cmsis_iccarm.h
  * @brief    CMSIS compiler ICCARM (IAR Compiler for Arm) header file
  * @version  V5.0.0
  * @date     04. December 2022
@@ -25,8 +25,8 @@
 //
 //------------------------------------------------------------------------------
 
-#ifndef __CMSIS_GENERIC_ICCARM_H__
-#define __CMSIS_GENERIC_ICCARM_H__
+#ifndef __CMSIS_ICCARM_H__
+#define __CMSIS_ICCARM_H__
 
 #ifndef __ICCARM__
   #error This file should only be compiled by ICCARM
@@ -905,4 +905,4 @@
   #define __PKHBT   __iar_builtin_PKHBT
   #define __PKHTB   __iar_builtin_PKHTB
 #endif /* __ICCARM_INTRINSICS_VERSION__ == 2 && __ARM_MEDIA__*/
-#endif /* __CMSIS_GENERIC_ICCARM_H__ */
+#endif /* __CMSIS_ICCARM_H__ */

@@ -1,5 +1,5 @@
 /**************************************************************************//**
- * @file     cmsis_tiarmclang.h
+ * @file     cmsis_tiarmclang_corem.h
  * @brief    CMSIS compiler tiarmclang header file
  * @version  V1.0.0
  * @date     04. April 2023
@@ -24,8 +24,8 @@
 
 /*lint -esym(9058, IRQn)*/ /* disable MISRA 2012 Rule 2.4 for IRQn */
 
-#ifndef __CMSIS_TIARMCLANG_H
-#define __CMSIS_TIARMCLANG_H
+#ifndef __CMSIS_TIARMCLANG_COREM_H
+#define __CMSIS_TIARMCLANG_COREM_H
 
 #pragma clang system_header   /* treat file as system include file */
 
@@ -1507,4 +1507,4 @@ __STATIC_FORCEINLINE int32_t __SMMLA (int32_t op1, int32_t op2, int32_t op3)
 /** @} end of group CMSIS_SIMD_intrinsics */
 
 
-#endif /* __CMSIS_TIARMCLANG_H */
+#endif /* __CMSIS_TIARMCLANG_COREM_H */

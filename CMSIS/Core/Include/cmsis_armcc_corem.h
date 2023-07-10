@@ -1,5 +1,5 @@
 /**************************************************************************//**
- * @file     cmsis_armcc.h
+ * @file     cmsis_armcc_corem.h
  * @brief    CMSIS compiler ARMCC (Arm Compiler 5) header file
  * @version  V5.4.0
  * @date     04. December 2022
@@ -22,11 +22,11 @@
  * limitations under the License.
  */
 
-#ifndef __CMSIS_ARMCC_H
-#define __CMSIS_ARMCC_H
+#ifndef __CMSIS_ARMCC_COREM_H
+#define __CMSIS_ARMCC_COREM_H
 
-// Include the generic settigs:
-#include "cmsis_generic_armcc.h"
+// Include the generic settings:
+#include "cmsis_armcc.h"
 
 /* #########################  Startup and Lowlevel Init  ######################## */
 
@@ -255,4 +255,4 @@ __STATIC_INLINE void __set_PRIMASK(uint32_t priMask)
 /*@} end of CMSIS_Core_RegAccFunctions */
 
 
-#endif /* __CMSIS_ARMCC_H */
+#endif /* __CMSIS_ARMCC_COREM_H */

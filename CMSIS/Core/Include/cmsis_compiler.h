@@ -1,5 +1,5 @@
 /**************************************************************************//**
- * @file     cmsis_generic_compiler.h
+ * @file     cmsis_compiler.h
  * @brief    CMSIS compiler generic header file
  * @version  V5.0.0
  * @date     04. December 2022
@@ -22,8 +22,8 @@
  * limitations under the License.
  */
 
-#ifndef __CMSIS_GENERIC_COMPILER_H
-#define __CMSIS_GENERIC_COMPILER_H
+#ifndef __CMSIS_COMPILER_H
+#define __CMSIS_COMPILER_H
 
 #include <stdint.h>
 
@@ -32,11 +32,11 @@
  */
 #if   defined ( __CC_ARM )
   #if defined __CORTEX_A
-    #include "cmsis_cortexa_armcc.h"
+    #include "cmsis_armcc_cortexa.h"
   #elif defined __CORTEX_R
-    #include "cmsis_cortexr_armcc.h"
+    #include "cmsis_armcc_cortexr.h"
   #elif defined __CORTEX_M
-    #include "cmsis_cortexm_armcc.h"
+    #include "cmsis_armcc_cortexm.h"
   #else
     #error "Unknown architecture"
   #endif
@@ -51,7 +51,7 @@
   #elif defined __CORTEX_R
     #error "Core-R is not supported for this compiler"
   #elif defined __CORTEX_M
-    #include "cmsis_corem_armclang_ltm.h"
+    #include "cmsis_armclang_ltm_corem_corem.h"
   #else
     #error "Unknown architecture"
   #endif
@@ -61,11 +61,11 @@
  */
 #elif defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6100100)
   #if defined __CORTEX_A
-    #include "cmsis_corema_armclang.h"
+    #include "cmsis_armclang_corema.h"
   #elif defined __CORTEX_R
-    #include "cmsis_corer_armclang.h"
+    #include "cmsis_armclang_corer.h"
   #elif defined __CORTEX_M
-    #include "cmsis_corem_armclang.h"
+    #include "cmsis_armclang.h"
   #else
     #error "Unknown architecture"
   #endif
@@ -79,7 +79,7 @@
   #elif defined __CORTEX_R
     #error "Core-R is not supported for this compiler"
   #elif defined __CORTEX_M
-    #include "cmsis_corem_tiarmclang.h"
+    #include "cmsis_tiarmclang_corem.h"
   #else
     #error "Unknown architecture"
   #endif
@@ -89,11 +89,11 @@
  */
 #elif defined ( __GNUC__ )
   #if defined __CORTEX_A
-    #include "cmsis_corea_gcc.h"
+    #include "cmsis_gcc_corea.h"
   #elif defined __CORTEX_R
-    #include "cmsis_corer_gcc.h"
+    #include "cmsis_gcc_corer.h"
   #elif defined __CORTEX_M
-    #include "cmsis_corem_gcc.h"
+    #include "cmsis_gcc_corem.h"
   #else
     #error "Unknown architecture"
   #endif
@@ -103,11 +103,11 @@
  */
 #elif defined ( __ICCARM__ )
   #if defined __CORTEX_A
-    #include "cmsis_corea_iccarm.h"
+    #include "cmsis_iccarm_corea.h"
   #elif defined __CORTEX_R
-    #include "cmsis_corer_iccarm.h"
+    #include "cmsis_iccarm_corer.h"
   #elif defined __CORTEX_M
-    #include "cmsis_corem_iccarm.h"
+    #include "cmsis_iccarm_corem.h"
   #else
     #error "Unknown architecture"
   #endif
@@ -358,5 +358,5 @@
 #endif
 
 
-#endif /* __CMSIS_GENERIC_COMPILER_H */
+#endif /* __CMSIS_COMPILER_H */
 

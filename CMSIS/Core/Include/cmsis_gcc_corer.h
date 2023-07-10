@@ -1,5 +1,5 @@
 /**************************************************************************//**
- * @file     cmsis_gcc.h
+ * @file     cmsis_gcc_corer.h
  * @brief    CMSIS compiler GCC header file
  * @version  V5.0.0
  * @date     04. December 2022
@@ -22,11 +22,11 @@
  * limitations under the License.
  */
 
-#ifndef __CMSIS_GCC_H
-#define __CMSIS_GCC_H
+#ifndef __CMSIS_GCC_CORER_H
+#define __CMSIS_GCC_CORER_H
 
-// Include the generic settigs:
-#include "cmsis_generic_gcc.h"
+// Include the generic settings:
+#include "cmsis_gcc.h"
 
 /* ignore some GCC warnings */
 #pragma GCC diagnostic push
@@ -96,4 +96,4 @@ __STATIC_FORCEINLINE void __set_SP(uint32_t stack)
 
 #pragma GCC diagnostic pop
 
-#endif /* __CMSIS_GCC_H */
+#endif /* __CMSIS_GCC_CORER_H */

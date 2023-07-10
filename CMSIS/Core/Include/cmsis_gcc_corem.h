@@ -1,6 +1,6 @@
 /**************************************************************************//**
- * @file     cmsis_armclang.h
- * @brief    CMSIS compiler armclang (Arm Compiler 6) header file
+ * @file     cmsis_gcc_corem.h
+ * @brief    CMSIS compiler GCC header file
  * @version  V5.5.0
  * @date     04. December 2022
  ******************************************************************************/
@@ -22,28 +22,73 @@
  * limitations under the License.
  */
 
-/*lint -esym(9058, IRQn)*/ /* disable MISRA 2012 Rule 2.4 for IRQn */
+#ifndef __CMSIS_GCC_COREM_H
+#define __CMSIS_GCC_COREM_H
 
-#ifndef __CMSIS_ARMCLANG_H
-#define __CMSIS_ARMCLANG_H
+// Include the generic settings:
+#include "cmsis_gcc.h"
 
-#pragma clang system_header   /* treat file as system include file */
+/* ignore some GCC warnings */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wsign-conversion"
+#pragma GCC diagnostic ignored "-Wconversion"
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 
-// Include the generic settigs:
-#include "cmsis_generic_armclang.h"
 
 /* #########################  Startup and Lowlevel Init  ######################## */
 
 #ifndef __PROGRAM_START
-  #define __PROGRAM_START           __main
+  /**
+    \brief   Initializes data and bss sections
+    \details This default implementations initialized all data and additional bss
+             sections relying on .copy.table and .zero.table specified properly
+             in the used linker script.
+  
+   */
+  __STATIC_FORCEINLINE __NO_RETURN void __cmsis_start(void)
+  {
+    extern void _start(void) __NO_RETURN;
+  
+    typedef struct __copy_table {
+      uint32_t const* src;
+      uint32_t* dest;
+      uint32_t  wlen;
+    } __copy_table_t;
+  
+    typedef struct __zero_table {
+      uint32_t* dest;
+      uint32_t  wlen;
+    } __zero_table_t;
+  
+    extern const __copy_table_t __copy_table_start__;
+    extern const __copy_table_t __copy_table_end__;
+    extern const __zero_table_t __zero_table_start__;
+    extern const __zero_table_t __zero_table_end__;
+  
+    for (__copy_table_t const* pTable = &__copy_table_start__; pTable < &__copy_table_end__; ++pTable) {
+      for(uint32_t i=0u; i<pTable->wlen; ++i) {
+        pTable->dest[i] = pTable->src[i];
+      }
+    }
+  
+    for (__zero_table_t const* pTable = &__zero_table_start__; pTable < &__zero_table_end__; ++pTable) {
+      for(uint32_t i=0u; i<pTable->wlen; ++i) {
+        pTable->dest[i] = 0u;
+      }
+    }
+  
+    _start();
+  }
+  
+  #define __PROGRAM_START           __cmsis_start
 #endif
 
 #ifndef __INITIAL_SP
-  #define __INITIAL_SP              Image$$ARM_LIB_STACK$$ZI$$Limit
+  #define __INITIAL_SP              __StackTop
 #endif
 
 #ifndef __STACK_LIMIT
-  #define __STACK_LIMIT             Image$$ARM_LIB_STACK$$ZI$$Base
+  #define __STACK_LIMIT             __StackLimit
 #endif
 
 #ifndef __VECTOR_TABLE
@@ -51,21 +96,22 @@
 #endif
 
 #ifndef __VECTOR_TABLE_ATTRIBUTE
-  #define __VECTOR_TABLE_ATTRIBUTE  __attribute__((used, section("RESET")))
+  #define __VECTOR_TABLE_ATTRIBUTE  __attribute__((used, section(".vectors")))
 #endif
 
 #if defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3U)
   #ifndef __STACK_SEAL
-    #define __STACK_SEAL              Image$$STACKSEAL$$ZI$$Base
+    #define __STACK_SEAL              __StackSeal
   #endif
-  
+
   #ifndef __TZ_STACK_SEAL_SIZE
     #define __TZ_STACK_SEAL_SIZE      8U
   #endif
-  
+
   #ifndef __TZ_STACK_SEAL_VALUE
     #define __TZ_STACK_SEAL_VALUE     0xFEF5EDA5FEF5EDA5ULL
   #endif
+
 
   __STATIC_FORCEINLINE void __TZ_set_STACKSEAL_S (uint32_t* stackTop) {
     *((uint64_t *)stackTop) = __TZ_STACK_SEAL_VALUE;
@@ -73,11 +119,6 @@
 #endif
 
 
-/* ###########################  Core Function Access  ########################### */
-/** \ingroup  CMSIS_Core_FunctionInterface
-    \defgroup CMSIS_Core_RegAccFunctions CMSIS Core Register Access Functions
-  @{
- */
 
 
 /**
@@ -367,11 +408,10 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
 #endif
 
 
-#if ((defined (__ARM_ARCH_7M__       ) && (__ARM_ARCH_7M__        == 1)) || \
-     (defined (__ARM_ARCH_7EM__      ) && (__ARM_ARCH_7EM__       == 1)) || \
-     (defined (__ARM_ARCH_8M_MAIN__  ) && (__ARM_ARCH_8M_MAIN__   == 1)) || \
-     (defined (__ARM_ARCH_8_1M_MAIN__) && (__ARM_ARCH_8_1M_MAIN__ == 1))     )
-
+#if ((defined (__ARM_ARCH_7M__      ) && (__ARM_ARCH_7M__      == 1)) || \
+     (defined (__ARM_ARCH_7EM__     ) && (__ARM_ARCH_7EM__     == 1)) || \
+     (defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1))    )
+  
   /**
     \brief   Get Base Priority
     \details Returns the current value of the Base Priority register.
@@ -384,8 +424,8 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
     __ASM volatile ("MRS %0, basepri" : "=r" (result) );
     return(result);
   }
-
-
+  
+  
   #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
     /**
       \brief   Get Base Priority (non-secure)
@@ -400,8 +440,8 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
       return(result);
     }
   #endif
-
-
+  
+  
   /**
     \brief   Set Base Priority
     \details Assigns the given value to the Base Priority register.
@@ -411,9 +451,9 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
   {
     __ASM volatile ("MSR basepri, %0" : : "r" (basePri) : "memory");
   }
-
-
-   #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
+  
+  
+  #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
     /**
       \brief   Set Base Priority (non-secure)
       \details Assigns the given value to the non-secure Base Priority register when in secure state.
@@ -424,8 +464,8 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
       __ASM volatile ("MSR basepri_ns, %0" : : "r" (basePri) : "memory");
     }
   #endif
-
-
+  
+  
   /**
     \brief   Set Base Priority with condition
     \details Assigns the given value to the Base Priority register only if BASEPRI masking is disabled,
@@ -466,8 +506,8 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
       return(result);
     }
   #endif
-
-
+  
+  
   /**
     \brief   Set Fault Mask
     \details Assigns the given value to the Fault Mask register.
@@ -490,17 +530,13 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
       __ASM volatile ("MSR faultmask_ns, %0" : : "r" (faultMask) : "memory");
     }
   #endif
-
-#endif /* ((defined (__ARM_ARCH_7M__       ) && (__ARM_ARCH_7M__        == 1)) || \
-           (defined (__ARM_ARCH_7EM__      ) && (__ARM_ARCH_7EM__       == 1)) || \
-           (defined (__ARM_ARCH_8M_MAIN__  ) && (__ARM_ARCH_8M_MAIN__   == 1)) || \
-           (defined (__ARM_ARCH_8_1M_MAIN__) && (__ARM_ARCH_8_1M_MAIN__ == 1))     ) */
+#endif /* ((defined (__ARM_ARCH_7M__      ) && (__ARM_ARCH_7M__      == 1)) || \
+           (defined (__ARM_ARCH_7EM__     ) && (__ARM_ARCH_7EM__     == 1)) || \
+           (defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1))    ) */
 
 
-#if ((defined (__ARM_ARCH_8M_MAIN__  ) && (__ARM_ARCH_8M_MAIN__   == 1)) || \
-     (defined (__ARM_ARCH_8M_BASE__  ) && (__ARM_ARCH_8M_BASE__   == 1)) || \
-     (defined (__ARM_ARCH_8_1M_MAIN__) && (__ARM_ARCH_8_1M_MAIN__ == 1))     )
-
+#if ((defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) || \
+     (defined (__ARM_ARCH_8M_BASE__ ) && (__ARM_ARCH_8M_BASE__ == 1))    )
   /**
     \brief   Get Process Stack Pointer Limit
     Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
@@ -512,8 +548,7 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
    */
   __STATIC_FORCEINLINE uint32_t __get_PSPLIM(void)
   {
-  #if (!((defined (__ARM_ARCH_8M_MAIN__   ) && (__ARM_ARCH_8M_MAIN__   == 1)) || \
-         (defined (__ARM_ARCH_8_1M_MAIN__ ) && (__ARM_ARCH_8_1M_MAIN__ == 1))   ) && \
+  #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) && \
       (!defined (__ARM_FEATURE_CMSE) || (__ARM_FEATURE_CMSE < 3)))
       // without main extensions, the non-secure PSPLIM is RAZ/WI
     return 0U;
@@ -525,30 +560,28 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
   }
   
   #if (defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3))
-  /**
-    \brief   Get Process Stack Pointer Limit (non-secure)
-    Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
-    Stack Pointer Limit register hence zero is returned always in non-secure
-    mode.
-  
-    \details Returns the current value of the non-secure Process Stack Pointer Limit (PSPLIM) when in secure state.
-    \return               PSPLIM Register value
-   */
-  __STATIC_FORCEINLINE uint32_t __TZ_get_PSPLIM_NS(void)
-  {
-  #if (!((defined (__ARM_ARCH_8M_MAIN__   ) && (__ARM_ARCH_8M_MAIN__   == 1)) || \
-         (defined (__ARM_ARCH_8_1M_MAIN__ ) && (__ARM_ARCH_8_1M_MAIN__ == 1))   ) )
-    // without main extensions, the non-secure PSPLIM is RAZ/WI
-    return 0U;
-  #else
-    uint32_t result;
-    __ASM volatile ("MRS %0, psplim_ns"  : "=r" (result) );
-    return result;
+    /**
+      \brief   Get Process Stack Pointer Limit (non-secure)
+      Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
+      Stack Pointer Limit register hence zero is returned always.
+    
+      \details Returns the current value of the non-secure Process Stack Pointer Limit (PSPLIM) when in secure state.
+      \return               PSPLIM Register value
+     */
+    __STATIC_FORCEINLINE uint32_t __TZ_get_PSPLIM_NS(void)
+    {
+    #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)))
+      // without main extensions, the non-secure PSPLIM is RAZ/WI
+      return 0U;
+    #else
+      uint32_t result;
+      __ASM volatile ("MRS %0, psplim_ns"  : "=r" (result) );
+      return result;
+    #endif
+    }
   #endif
-  }
-  #endif
-  
-  
+
+
   /**
     \brief   Set Process Stack Pointer Limit
     Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
@@ -560,8 +593,7 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
    */
   __STATIC_FORCEINLINE void __set_PSPLIM(uint32_t ProcStackPtrLimit)
   {
-  #if (!((defined (__ARM_ARCH_8M_MAIN__   ) && (__ARM_ARCH_8M_MAIN__   == 1)) || \
-         (defined (__ARM_ARCH_8_1M_MAIN__ ) && (__ARM_ARCH_8_1M_MAIN__ == 1))   ) && \
+  #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) && \
       (!defined (__ARM_FEATURE_CMSE) || (__ARM_FEATURE_CMSE < 3)))
     // without main extensions, the non-secure PSPLIM is RAZ/WI
     (void)ProcStackPtrLimit;
@@ -569,22 +601,20 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
     __ASM volatile ("MSR psplim, %0" : : "r" (ProcStackPtrLimit));
   #endif
   }
-
-
+  
+  
   #if (defined (__ARM_FEATURE_CMSE  ) && (__ARM_FEATURE_CMSE   == 3))
     /**
       \brief   Set Process Stack Pointer (non-secure)
       Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
-      Stack Pointer Limit register hence the write is silently ignored in non-secure
-      mode.
+      Stack Pointer Limit register hence the write is silently ignored.
     
       \details Assigns the given value to the non-secure Process Stack Pointer Limit (PSPLIM) when in secure state.
       \param [in]    ProcStackPtrLimit  Process Stack Pointer Limit value to set
      */
     __STATIC_FORCEINLINE void __TZ_set_PSPLIM_NS(uint32_t ProcStackPtrLimit)
     {
-    #if (!((defined (__ARM_ARCH_8M_MAIN__   ) && (__ARM_ARCH_8M_MAIN__   == 1)) || \
-           (defined (__ARM_ARCH_8_1M_MAIN__ ) && (__ARM_ARCH_8_1M_MAIN__ == 1))   ) )
+    #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)))
       // without main extensions, the non-secure PSPLIM is RAZ/WI
       (void)ProcStackPtrLimit;
     #else
@@ -592,20 +622,20 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
     #endif
     }
   #endif
-
-
+  
+  
   /**
     \brief   Get Main Stack Pointer Limit
     Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
-    Stack Pointer Limit register hence zero is returned always.
+    Stack Pointer Limit register hence zero is returned always in non-secure
+    mode.
   
     \details Returns the current value of the Main Stack Pointer Limit (MSPLIM).
     \return               MSPLIM Register value
    */
   __STATIC_FORCEINLINE uint32_t __get_MSPLIM(void)
   {
-  #if (!((defined (__ARM_ARCH_8M_MAIN__   ) && (__ARM_ARCH_8M_MAIN__   == 1)) || \
-         (defined (__ARM_ARCH_8_1M_MAIN__ ) && (__ARM_ARCH_8_1M_MAIN__ == 1))   ) && \
+  #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) && \
       (!defined (__ARM_FEATURE_CMSE) || (__ARM_FEATURE_CMSE < 3)))
     // without main extensions, the non-secure MSPLIM is RAZ/WI
     return 0U;
@@ -615,8 +645,8 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
     return result;
   #endif
   }
-
-
+  
+  
   #if (defined (__ARM_FEATURE_CMSE  ) && (__ARM_FEATURE_CMSE   == 3))
     /**
       \brief   Get Main Stack Pointer Limit (non-secure)
@@ -628,8 +658,7 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
      */
     __STATIC_FORCEINLINE uint32_t __TZ_get_MSPLIM_NS(void)
     {
-    #if (!((defined (__ARM_ARCH_8M_MAIN__   ) && (__ARM_ARCH_8M_MAIN__   == 1)) || \
-           (defined (__ARM_ARCH_8_1M_MAIN__ ) && (__ARM_ARCH_8_1M_MAIN__ == 1))   ) )
+    #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)))
       // without main extensions, the non-secure MSPLIM is RAZ/WI
       return 0U;
     #else
@@ -639,20 +668,20 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
     #endif
     }
   #endif
-
-
+  
+  
   /**
     \brief   Set Main Stack Pointer Limit
     Devices without ARMv8-M Main Extensions (i.e. Cortex-M23) lack the non-secure
-    Stack Pointer Limit register hence the write is silently ignored.
+    Stack Pointer Limit register hence the write is silently ignored in non-secure
+    mode.
   
     \details Assigns the given value to the Main Stack Pointer Limit (MSPLIM).
     \param [in]    MainStackPtrLimit  Main Stack Pointer Limit value to set
    */
   __STATIC_FORCEINLINE void __set_MSPLIM(uint32_t MainStackPtrLimit)
   {
-  #if (!((defined (__ARM_ARCH_8M_MAIN__   ) && (__ARM_ARCH_8M_MAIN__   == 1)) || \
-         (defined (__ARM_ARCH_8_1M_MAIN__ ) && (__ARM_ARCH_8_1M_MAIN__ == 1))   ) && \
+  #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) && \
       (!defined (__ARM_FEATURE_CMSE) || (__ARM_FEATURE_CMSE < 3)))
     // without main extensions, the non-secure MSPLIM is RAZ/WI
     (void)MainStackPtrLimit;
@@ -660,8 +689,8 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
     __ASM volatile ("MSR msplim, %0" : : "r" (MainStackPtrLimit));
   #endif
   }
-
-
+  
+  
   #if (defined (__ARM_FEATURE_CMSE  ) && (__ARM_FEATURE_CMSE   == 3))
     /**
       \brief   Set Main Stack Pointer Limit (non-secure)
@@ -673,8 +702,7 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
      */
     __STATIC_FORCEINLINE void __TZ_set_MSPLIM_NS(uint32_t MainStackPtrLimit)
     {
-    #if (!((defined (__ARM_ARCH_8M_MAIN__   ) && (__ARM_ARCH_8M_MAIN__   == 1)) || \
-           (defined (__ARM_ARCH_8_1M_MAIN__ ) && (__ARM_ARCH_8_1M_MAIN__ == 1))   ) )
+    #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)))
       // without main extensions, the non-secure MSPLIM is RAZ/WI
       (void)MainStackPtrLimit;
     #else
@@ -682,12 +710,14 @@ __STATIC_FORCEINLINE void __set_PRIMASK(uint32_t priMask)
     #endif
     }
   #endif
-
-#endif /* ((defined (__ARM_ARCH_8M_MAIN__  ) && (__ARM_ARCH_8M_MAIN__   == 1)) || \
-           (defined (__ARM_ARCH_8M_BASE__  ) && (__ARM_ARCH_8M_BASE__   == 1)) || \
-           (defined (__ARM_ARCH_8_1M_MAIN__) && (__ARM_ARCH_8_1M_MAIN__ == 1))     ) */
-
-/** @} end of CMSIS_Core_RegAccFunctions */
+#endif /* ((defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)) || \
+           (defined (__ARM_ARCH_8M_BASE__ ) && (__ARM_ARCH_8M_BASE__ == 1))    ) */
 
 
-#endif /* __CMSIS_ARMCLANG_H */
+
+/*@} end of CMSIS_Core_RegAccFunctions */
+
+
+#pragma GCC diagnostic pop
+
+#endif /* __CMSIS_GCC_COREM_H */

@@ -1,5 +1,5 @@
 /**************************************************************************//**
- * @file     cmsis_generic_gcc.h
+ * @file     cmsis_gcc.h
  * @brief    CMSIS compiler GCC header file
  * @version  V5.5.0
  * @date     04. December 2022
@@ -22,8 +22,8 @@
  * limitations under the License.
  */
 
-#ifndef __CMSIS_GENERIC_GCC_H
-#define __CMSIS_GENERIC_GCC_H
+#ifndef __CMSIS_GCC_H
+#define __CMSIS_GCC_H
 
 /* ignore some GCC warnings */
 #pragma GCC diagnostic push
@@ -1502,4 +1502,4 @@ __STATIC_FORCEINLINE void __set_FPSCR(uint32_t fpscr)
 
 #pragma GCC diagnostic pop
 
-#endif /* __CMSIS_GENERIC_GCC_H */
+#endif /* __CMSIS_GCC_H */

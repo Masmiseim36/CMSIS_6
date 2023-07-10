@@ -1,5 +1,5 @@
 /**************************************************************************//**
- * @file     cmsis_armclang_ltm.h
+ * @file     cmsis_armclang_ltm_corem.h
  * @brief    CMSIS compiler armclang (Arm Compiler 6) header file
  * @version  V1.6.0
  * @date     04. December 2022
@@ -24,13 +24,13 @@
 
 /*lint -esym(9058, IRQn)*/ /* disable MISRA 2012 Rule 2.4 for IRQn */
 
-#ifndef __CMSIS_ARMCLANG_H
-#define __CMSIS_ARMCLANG_H
+#ifndef __CMSIS_ARMCLANG_COREM_H
+#define __CMSIS_ARMCLANG_COREM_H
 
 #pragma clang system_header   /* treat file as system include file */
 
 // Include the generic settigs:
-#include "cmsis_generic_armclang_ltm.h"
+#include "cmsis_armclang_ltm.h"
 
 /* #########################  Startup and Lowlevel Init  ######################## */
 
@@ -690,4 +690,4 @@ __STATIC_FORCEINLINE void __TZ_set_MSPLIM_NS(uint32_t MainStackPtrLimit)
 /** @} end of CMSIS_Core_RegAccFunctions */
 
 
-#endif /* __CMSIS_ARMCLANG_H */
+#endif /* __CMSIS_ARMCLANG_COREM_H */

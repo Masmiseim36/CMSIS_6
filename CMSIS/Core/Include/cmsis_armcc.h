@@ -1,5 +1,5 @@
 /**************************************************************************//**
- * @file     cmsis_generic_armcc.h
+ * @file     cmsis_armcc.h
  * @brief    CMSIS compiler ARMCC (Arm Compiler 5) header file
  * @version  V5.0.0
  * @date     04. December 2022
@@ -22,8 +22,8 @@
  * limitations under the License.
  */
 
-#ifndef __CMSIS_GENERIC_ARMCC_H
-#define __CMSIS_GENERIC_ARMCC_H
+#ifndef __CMSIS_ARMCC_H
+#define __CMSIS_ARMCC_H
 
 #if defined(__ARMCC_VERSION) && (__ARMCC_VERSION < 400677)
   #error "Please use Arm Compiler Toolchain V4.0.677 or later!"
@@ -655,4 +655,4 @@ __STATIC_INLINE void __set_FPSCR(uint32_t fpscr)
 #endif /* ((defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     ) */
 /*@} end of group CMSIS_SIMD_intrinsics */
 
-#endif /* __CMSIS_GENERIC_ARMCC_H */
+#endif /* __CMSIS_ARMCC_H */

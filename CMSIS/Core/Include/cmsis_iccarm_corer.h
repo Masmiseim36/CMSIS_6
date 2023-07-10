@@ -1,5 +1,5 @@
 /**************************************************************************//**
- * @file     cmsis_iccarm.h
+ * @file     cmsis_iccarm_corer.h
  * @brief    CMSIS compiler ICCARM (IAR Compiler for Arm) header file
  * @version  V5.0.0
  * @date     04. December 2022
@@ -25,10 +25,10 @@
 //------------------------------------------------------------------------------
 
 
-#ifndef __CMSIS_ICCARM_H__
-#define __CMSIS_ICCARM_H__
+#ifndef __CMSIS_ICCARM_CORER_H__
+#define __CMSIS_ICCARM_CORER_H__
 
 // Include the generic settigs:
-#include "cmsis_generic_iccarm.h"
+#include "cmsis_iccarm.h"
 
-#endif /* __CMSIS_ICCARM_H__ */
+#endif /* __CMSIS_ICCARM_CORER_H__ */

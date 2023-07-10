@@ -1,5 +1,5 @@
 /**************************************************************************//**
- * @file     cmsis_armcc.h
+ * @file     cmsis_armcc_corea.h
  * @brief    CMSIS compiler ARMCC (Arm Compiler 5) header file
  * @version  V5.4.0
  * @date     04. December 2022
@@ -22,11 +22,11 @@
  * limitations under the License.
  */
 
-#ifndef __CMSIS_ARMCC_H
-#define __CMSIS_ARMCC_H
+#ifndef __CMSIS_ARMCC_COREA_H
+#define __CMSIS_ARMCC_COREA_H
 
-// Include the generic settigs:
-#include "cmsis_generic_armcc.h"
+// Include the generic settings:
+#include "cmsis_armcc.h"
 
 
 /** \brief  Get CPSR (Current Program Status Register)
@@ -235,4 +235,4 @@ __STATIC_INLINE __ASM void __FPU_Enable(void)
         BX      LR
 }
 
-#endif /* __CMSIS_ARMCC_H */
+#endif /* __CMSIS_ARMCC_COREA_H */

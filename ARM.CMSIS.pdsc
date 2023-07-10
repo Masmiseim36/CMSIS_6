@@ -648,24 +648,16 @@
 
   <components>
     <!-- CMSIS-Core component -->
-    <component Cclass="CMSIS" Cgroup="CORE" Cversion="5.7.0"  condition="ARMv6_7_8-M Device" >
-      <description>CMSIS-CORE for Cortex-A/R/M</description>
-      <files>
-        <!-- CPU independent -->
-        <file category="include" name="CMSIS/Core/"/>
-      </files>
-    </component>
-
     <component Cclass="CMSIS" Cgroup="CORE" Cversion="5.6.0"  condition="ARMv6_7_8-M Device" >
       <description>CMSIS-CORE for Cortex-M, SC000, SC300, Star-MC1, ARMv8-M, ARMv8.1-M</description>
       <files>
         <!-- CPU independent -->
         <file category="doc"     name="CMSIS/Documentation/Core/html/index.html"/>
-        <file category="include" name="CMSIS/Core_M/Include/"/>
-        <file category="header"  name="CMSIS/Core_M/Include/tz_context.h" condition="TrustZone"/>
+        <file category="include" name="CMSIS/Core/Include/"/>
+        <file category="header"  name="CMSIS/Core/Include/tz_context.h" condition="TrustZone"/>
         <!-- Code template -->
-        <file category="sourceC" attr="template" condition="TZ Secure" name="CMSIS/Core_M/Template/ARMv8-M/main_s.c"     version="1.1.1" select="Secure mode 'main' module for ARMv8-M"/>
-        <file category="sourceC" attr="template" condition="TZ Secure" name="CMSIS/Core_M/Template/ARMv8-M/tz_context.c" version="1.1.1" select="RTOS Context Management (TrustZone for ARMv8-M)" />
+        <file category="sourceC" attr="template" condition="TZ Secure" name="CMSIS/Core/Template/ARMv8-M/main_s.c"     version="1.1.1" select="Secure mode 'main' module for ARMv8-M"/>
+        <file category="sourceC" attr="template" condition="TZ Secure" name="CMSIS/Core/Template/ARMv8-M/tz_context.c" version="1.1.1" select="RTOS Context Management (TrustZone for ARMv8-M)" />
       </files>
     </component>
 
@@ -674,7 +666,7 @@
       <files>
         <!-- CPU independent -->
         <file category="doc"     name="CMSIS/Documentation/Core_A/html/index.html"/>
-        <file category="include" name="CMSIS/Core_A/Include/"/>
+        <file category="include" name="CMSIS/Core/Include/"/>
       </files>
     </component>
 
@@ -682,7 +674,7 @@
     <component Cclass="Device" Cgroup="IRQ Controller" Csub="GIC" Capiversion="1.0.0" Cversion="1.2.0" condition="ARMv7-A Device">
       <description>IRQ Controller implementation using GIC</description>
       <files>
-        <file category="sourceC" name="CMSIS/Core_A/Source/irq_ctrl_gic.c"/>
+        <file category="sourceC" name="CMSIS/Core/Source/irq_ctrl_gic.c"/>
       </files>
     </component>
 

@@ -1,6 +1,6 @@
 /**************************************************************************//**
- * @file     cmsis_armclang.h
- * @brief    CMSIS compiler armclang (Arm Compiler 6) header file
+ * @file     cmsis_armcc_corer.h
+ * @brief    CMSIS compiler ARMCC (Arm Compiler 5) header file
  * @version  V5.0.0
  * @date     04. December 2022
  ******************************************************************************/
@@ -22,32 +22,30 @@
  * limitations under the License.
  */
 
-#ifndef __CMSIS_ARMCLANG_H
-#define __CMSIS_ARMCLANG_H
+#ifndef __CMSIS_ARMCC_CORER_H
+#define __CMSIS_ARMCC_CORER_H
 
-#pragma clang system_header   /* treat file as system include file */
-
-// Include the generic settigs:
-#include "cmsis_generic_armclang.h"
+// Include the generic settings:
+#include "cmsis_armcc.h"
 
 
 /** \brief  Get Stack Pointer
-    \return Stack Pointer value
+    \return Stack Pointer
  */
-__STATIC_FORCEINLINE uint32_t __get_SP(void)
+__STATIC_INLINE __ASM uint32_t __get_SP(void)
 {
-  uint32_t result;
-  __ASM volatile("MOV  %0, sp" : "=r" (result) : : "memory");
-  return result;
+  MOV  r0, sp
+  BX   lr
 }
 
 /** \brief  Set Stack Pointer
     \param [in]    stack  Stack Pointer value to set
  */
-__STATIC_FORCEINLINE void __set_SP(uint32_t stack)
+__STATIC_INLINE __ASM void __set_SP(uint32_t stack)
 {
-  __ASM volatile("MOV  sp, %0" : : "r" (stack) : "memory");
+  MOV  sp, r0
+  BX   lr
 }
 
 
-#endif /* __CMSIS_ARMCLANG_H */
+#endif /* __CMSIS_ARMCC_CORER_H */

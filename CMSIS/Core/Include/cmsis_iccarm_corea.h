@@ -1,5 +1,5 @@
 /**************************************************************************//**
- * @file     cmsis_iccarm.h
+ * @file     cmsis_iccarm_corea.h
  * @brief    CMSIS compiler ICCARM (IAR Compiler for Arm) header file
  * @version  V5.1.0
  * @date     04. December 2022
@@ -26,11 +26,11 @@
 //------------------------------------------------------------------------------
 
 
-#ifndef __CMSIS_ICCARM_H__
-#define __CMSIS_ICCARM_H__
+#ifndef __CMSIS_ICCARM_COREA_H__
+#define __CMSIS_ICCARM_COREA_H__
 
 // Include the generic settigs:
-#include "cmsis_generic_iccarm.h"
+#include "cmsis_iccarm.h"
 
 #ifndef __ICCARM__
   #error This file should only be compiled by ICCARM
@@ -268,4 +268,4 @@ void __FPU_Enable(void)
 #pragma diag_default=Pe940
 #pragma diag_default=Pe177
 
-#endif /* __CMSIS_ICCARM_H__ */
+#endif /* __CMSIS_ICCARM_COREA_H__ */
