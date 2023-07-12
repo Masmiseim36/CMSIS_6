@@ -427,7 +427,7 @@
     <api Cclass="Device" Cgroup="IRQ Controller" Capiversion="1.0.0" exclusive="1">
       <description>Device interrupt controller interface</description>
       <files>
-        <file category="header" name="CMSIS/Core_A/Include/irq_ctrl.h"/>
+        <file category="header" name="CMSIS/Core/Include/irq_ctrl.h"/>
       </files>
     </api>
     <api Cclass="Device" Cgroup="OS Tick" Capiversion="1.0.1" exclusive="1">
