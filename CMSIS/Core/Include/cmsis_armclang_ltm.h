@@ -498,9 +498,9 @@ __STATIC_FORCEINLINE uint8_t __CLZ(uint32_t value)
   /**
     \brief   Unsigned Saturate
     \details Saturates an unsigned value.
-    \param [in]  value  Value to be saturated
-    \param [in]    sat  Bit position to saturate to (0..31)
-    \return             Saturated value
+    \param [in]  val  Value to be saturated
+    \param [in]  sat  Bit position to saturate to (0..31)
+    \return           Saturated value
    */
   __STATIC_FORCEINLINE uint32_t __USAT(int32_t val, uint32_t sat)
   {

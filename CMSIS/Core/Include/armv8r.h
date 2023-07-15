@@ -252,7 +252,7 @@
 #define     __IOM    volatile            /*!< \brief Defines 'read / write' structure member permissions */
 #define RESERVED(N, T) T RESERVED##N;    // placeholder struct members used for "reserved" areas
 
-/*@} end of group ARMv8-R */
+/** @} end of group ARMv8-R */
 
 
 

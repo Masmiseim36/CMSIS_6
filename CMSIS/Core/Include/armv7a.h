@@ -173,7 +173,7 @@
 #define     __IOM    volatile            /*!< \brief Defines 'read / write' structure member permissions */
 #define RESERVED(N, T) T RESERVED##N;    // placeholder struct members used for "reserved" areas
 
-/*@} end of group ARMv7-A */
+/** @} end of group ARMv7-A */
 
 
 
@@ -675,141 +675,141 @@ typedef union
  \brief  Union type to access the L2C_310 Cache Controller.
 */
 #if (__L2C_PRESENT == 1U) || defined(DOXYGEN)
-typedef struct
-{
-  __IM  uint32_t CACHE_ID;                   /*!< \brief Offset: 0x0000 (R/ ) Cache ID Register               */
-  __IM  uint32_t CACHE_TYPE;                 /*!< \brief Offset: 0x0004 (R/ ) Cache Type Register             */
-        RESERVED(0[0x3e], uint32_t)
-  __IOM uint32_t CONTROL;                    /*!< \brief Offset: 0x0100 (R/W) Control Register                */
-  __IOM uint32_t AUX_CNT;                    /*!< \brief Offset: 0x0104 (R/W) Auxiliary Control               */
-        RESERVED(1[0x3e], uint32_t)
-  __IOM uint32_t EVENT_CONTROL;              /*!< \brief Offset: 0x0200 (R/W) Event Counter Control           */
-  __IOM uint32_t EVENT_COUNTER1_CONF;        /*!< \brief Offset: 0x0204 (R/W) Event Counter 1 Configuration   */
-  __IOM uint32_t EVENT_COUNTER0_CONF;        /*!< \brief Offset: 0x0208 (R/W) Event Counter 1 Configuration   */
-        RESERVED(2[0x2], uint32_t)
-  __IOM uint32_t INTERRUPT_MASK;             /*!< \brief Offset: 0x0214 (R/W) Interrupt Mask                  */
-  __IM  uint32_t MASKED_INT_STATUS;          /*!< \brief Offset: 0x0218 (R/ ) Masked Interrupt Status         */
-  __IM  uint32_t RAW_INT_STATUS;             /*!< \brief Offset: 0x021c (R/ ) Raw Interrupt Status            */
-  __OM  uint32_t INTERRUPT_CLEAR;            /*!< \brief Offset: 0x0220 ( /W) Interrupt Clear                 */
-        RESERVED(3[0x143], uint32_t)
-  __IOM uint32_t CACHE_SYNC;                 /*!< \brief Offset: 0x0730 (R/W) Cache Sync                      */
-        RESERVED(4[0xf], uint32_t)
-  __IOM uint32_t INV_LINE_PA;                /*!< \brief Offset: 0x0770 (R/W) Invalidate Line By PA           */
-        RESERVED(6[2], uint32_t)
-  __IOM uint32_t INV_WAY;                    /*!< \brief Offset: 0x077c (R/W) Invalidate by Way               */
-        RESERVED(5[0xc], uint32_t)
-  __IOM uint32_t CLEAN_LINE_PA;              /*!< \brief Offset: 0x07b0 (R/W) Clean Line by PA                */
-        RESERVED(7[1], uint32_t)
-  __IOM uint32_t CLEAN_LINE_INDEX_WAY;       /*!< \brief Offset: 0x07b8 (R/W) Clean Line by Index/Way         */
-  __IOM uint32_t CLEAN_WAY;                  /*!< \brief Offset: 0x07bc (R/W) Clean by Way                    */
-        RESERVED(8[0xc], uint32_t)
-  __IOM uint32_t CLEAN_INV_LINE_PA;          /*!< \brief Offset: 0x07f0 (R/W) Clean and Invalidate Line by PA  */
-        RESERVED(9[1], uint32_t)
-  __IOM uint32_t CLEAN_INV_LINE_INDEX_WAY;   /*!< \brief Offset: 0x07f8 (R/W) Clean and Invalidate Line by Index/Way  */
-  __IOM uint32_t CLEAN_INV_WAY;              /*!< \brief Offset: 0x07fc (R/W) Clean and Invalidate by Way     */
-        RESERVED(10[0x40], uint32_t)
-  __IOM uint32_t DATA_LOCK_0_WAY;            /*!< \brief Offset: 0x0900 (R/W) Data Lockdown 0 by Way          */
-  __IOM uint32_t INST_LOCK_0_WAY;            /*!< \brief Offset: 0x0904 (R/W) Instruction Lockdown 0 by Way   */
-  __IOM uint32_t DATA_LOCK_1_WAY;            /*!< \brief Offset: 0x0908 (R/W) Data Lockdown 1 by Way          */
-  __IOM uint32_t INST_LOCK_1_WAY;            /*!< \brief Offset: 0x090c (R/W) Instruction Lockdown 1 by Way   */
-  __IOM uint32_t DATA_LOCK_2_WAY;            /*!< \brief Offset: 0x0910 (R/W) Data Lockdown 2 by Way          */
-  __IOM uint32_t INST_LOCK_2_WAY;            /*!< \brief Offset: 0x0914 (R/W) Instruction Lockdown 2 by Way   */
-  __IOM uint32_t DATA_LOCK_3_WAY;            /*!< \brief Offset: 0x0918 (R/W) Data Lockdown 3 by Way          */
-  __IOM uint32_t INST_LOCK_3_WAY;            /*!< \brief Offset: 0x091c (R/W) Instruction Lockdown 3 by Way   */
-  __IOM uint32_t DATA_LOCK_4_WAY;            /*!< \brief Offset: 0x0920 (R/W) Data Lockdown 4 by Way          */
-  __IOM uint32_t INST_LOCK_4_WAY;            /*!< \brief Offset: 0x0924 (R/W) Instruction Lockdown 4 by Way   */
-  __IOM uint32_t DATA_LOCK_5_WAY;            /*!< \brief Offset: 0x0928 (R/W) Data Lockdown 5 by Way          */
-  __IOM uint32_t INST_LOCK_5_WAY;            /*!< \brief Offset: 0x092c (R/W) Instruction Lockdown 5 by Way   */
-  __IOM uint32_t DATA_LOCK_6_WAY;            /*!< \brief Offset: 0x0930 (R/W) Data Lockdown 5 by Way          */
-  __IOM uint32_t INST_LOCK_6_WAY;            /*!< \brief Offset: 0x0934 (R/W) Instruction Lockdown 5 by Way   */
-  __IOM uint32_t DATA_LOCK_7_WAY;            /*!< \brief Offset: 0x0938 (R/W) Data Lockdown 6 by Way          */
-  __IOM uint32_t INST_LOCK_7_WAY;            /*!< \brief Offset: 0x093c (R/W) Instruction Lockdown 6 by Way   */
-        RESERVED(11[0x4], uint32_t)
-  __IOM uint32_t LOCK_LINE_EN;               /*!< \brief Offset: 0x0950 (R/W) Lockdown by Line Enable         */
-  __IOM uint32_t UNLOCK_ALL_BY_WAY;          /*!< \brief Offset: 0x0954 (R/W) Unlock All Lines by Way         */
-        RESERVED(12[0xaa], uint32_t)
-  __IOM uint32_t ADDRESS_FILTER_START;       /*!< \brief Offset: 0x0c00 (R/W) Address Filtering Start         */
-  __IOM uint32_t ADDRESS_FILTER_END;         /*!< \brief Offset: 0x0c04 (R/W) Address Filtering End           */
-        RESERVED(13[0xce], uint32_t)
-  __IOM uint32_t DEBUG_CONTROL;              /*!< \brief Offset: 0x0f40 (R/W) Debug Control Register          */
-} L2C_310_TypeDef;
-
-#define L2C_310           ((L2C_310_TypeDef *)L2C_310_BASE) /*!< \brief L2C_310 register set access pointer */
-#endif
+  typedef struct
+  {
+    __IM  uint32_t CACHE_ID;                   /*!< \brief Offset: 0x0000 (R/ ) Cache ID Register               */
+    __IM  uint32_t CACHE_TYPE;                 /*!< \brief Offset: 0x0004 (R/ ) Cache Type Register             */
+          RESERVED(0[0x3e], uint32_t)
+    __IOM uint32_t CONTROL;                    /*!< \brief Offset: 0x0100 (R/W) Control Register                */
+    __IOM uint32_t AUX_CNT;                    /*!< \brief Offset: 0x0104 (R/W) Auxiliary Control               */
+          RESERVED(1[0x3e], uint32_t)
+    __IOM uint32_t EVENT_CONTROL;              /*!< \brief Offset: 0x0200 (R/W) Event Counter Control           */
+    __IOM uint32_t EVENT_COUNTER1_CONF;        /*!< \brief Offset: 0x0204 (R/W) Event Counter 1 Configuration   */
+    __IOM uint32_t EVENT_COUNTER0_CONF;        /*!< \brief Offset: 0x0208 (R/W) Event Counter 1 Configuration   */
+          RESERVED(2[0x2], uint32_t)
+    __IOM uint32_t INTERRUPT_MASK;             /*!< \brief Offset: 0x0214 (R/W) Interrupt Mask                  */
+    __IM  uint32_t MASKED_INT_STATUS;          /*!< \brief Offset: 0x0218 (R/ ) Masked Interrupt Status         */
+    __IM  uint32_t RAW_INT_STATUS;             /*!< \brief Offset: 0x021c (R/ ) Raw Interrupt Status            */
+    __OM  uint32_t INTERRUPT_CLEAR;            /*!< \brief Offset: 0x0220 ( /W) Interrupt Clear                 */
+          RESERVED(3[0x143], uint32_t)
+    __IOM uint32_t CACHE_SYNC;                 /*!< \brief Offset: 0x0730 (R/W) Cache Sync                      */
+          RESERVED(4[0xf], uint32_t)
+    __IOM uint32_t INV_LINE_PA;                /*!< \brief Offset: 0x0770 (R/W) Invalidate Line By PA           */
+          RESERVED(6[2], uint32_t)
+    __IOM uint32_t INV_WAY;                    /*!< \brief Offset: 0x077c (R/W) Invalidate by Way               */
+          RESERVED(5[0xc], uint32_t)
+    __IOM uint32_t CLEAN_LINE_PA;              /*!< \brief Offset: 0x07b0 (R/W) Clean Line by PA                */
+          RESERVED(7[1], uint32_t)
+    __IOM uint32_t CLEAN_LINE_INDEX_WAY;       /*!< \brief Offset: 0x07b8 (R/W) Clean Line by Index/Way         */
+    __IOM uint32_t CLEAN_WAY;                  /*!< \brief Offset: 0x07bc (R/W) Clean by Way                    */
+          RESERVED(8[0xc], uint32_t)
+    __IOM uint32_t CLEAN_INV_LINE_PA;          /*!< \brief Offset: 0x07f0 (R/W) Clean and Invalidate Line by PA  */
+          RESERVED(9[1], uint32_t)
+    __IOM uint32_t CLEAN_INV_LINE_INDEX_WAY;   /*!< \brief Offset: 0x07f8 (R/W) Clean and Invalidate Line by Index/Way  */
+    __IOM uint32_t CLEAN_INV_WAY;              /*!< \brief Offset: 0x07fc (R/W) Clean and Invalidate by Way     */
+          RESERVED(10[0x40], uint32_t)
+    __IOM uint32_t DATA_LOCK_0_WAY;            /*!< \brief Offset: 0x0900 (R/W) Data Lockdown 0 by Way          */
+    __IOM uint32_t INST_LOCK_0_WAY;            /*!< \brief Offset: 0x0904 (R/W) Instruction Lockdown 0 by Way   */
+    __IOM uint32_t DATA_LOCK_1_WAY;            /*!< \brief Offset: 0x0908 (R/W) Data Lockdown 1 by Way          */
+    __IOM uint32_t INST_LOCK_1_WAY;            /*!< \brief Offset: 0x090c (R/W) Instruction Lockdown 1 by Way   */
+    __IOM uint32_t DATA_LOCK_2_WAY;            /*!< \brief Offset: 0x0910 (R/W) Data Lockdown 2 by Way          */
+    __IOM uint32_t INST_LOCK_2_WAY;            /*!< \brief Offset: 0x0914 (R/W) Instruction Lockdown 2 by Way   */
+    __IOM uint32_t DATA_LOCK_3_WAY;            /*!< \brief Offset: 0x0918 (R/W) Data Lockdown 3 by Way          */
+    __IOM uint32_t INST_LOCK_3_WAY;            /*!< \brief Offset: 0x091c (R/W) Instruction Lockdown 3 by Way   */
+    __IOM uint32_t DATA_LOCK_4_WAY;            /*!< \brief Offset: 0x0920 (R/W) Data Lockdown 4 by Way          */
+    __IOM uint32_t INST_LOCK_4_WAY;            /*!< \brief Offset: 0x0924 (R/W) Instruction Lockdown 4 by Way   */
+    __IOM uint32_t DATA_LOCK_5_WAY;            /*!< \brief Offset: 0x0928 (R/W) Data Lockdown 5 by Way          */
+    __IOM uint32_t INST_LOCK_5_WAY;            /*!< \brief Offset: 0x092c (R/W) Instruction Lockdown 5 by Way   */
+    __IOM uint32_t DATA_LOCK_6_WAY;            /*!< \brief Offset: 0x0930 (R/W) Data Lockdown 5 by Way          */
+    __IOM uint32_t INST_LOCK_6_WAY;            /*!< \brief Offset: 0x0934 (R/W) Instruction Lockdown 5 by Way   */
+    __IOM uint32_t DATA_LOCK_7_WAY;            /*!< \brief Offset: 0x0938 (R/W) Data Lockdown 6 by Way          */
+    __IOM uint32_t INST_LOCK_7_WAY;            /*!< \brief Offset: 0x093c (R/W) Instruction Lockdown 6 by Way   */
+          RESERVED(11[0x4], uint32_t)
+    __IOM uint32_t LOCK_LINE_EN;               /*!< \brief Offset: 0x0950 (R/W) Lockdown by Line Enable         */
+    __IOM uint32_t UNLOCK_ALL_BY_WAY;          /*!< \brief Offset: 0x0954 (R/W) Unlock All Lines by Way         */
+          RESERVED(12[0xaa], uint32_t)
+    __IOM uint32_t ADDRESS_FILTER_START;       /*!< \brief Offset: 0x0c00 (R/W) Address Filtering Start         */
+    __IOM uint32_t ADDRESS_FILTER_END;         /*!< \brief Offset: 0x0c04 (R/W) Address Filtering End           */
+          RESERVED(13[0xce], uint32_t)
+    __IOM uint32_t DEBUG_CONTROL;              /*!< \brief Offset: 0x0f40 (R/W) Debug Control Register          */
+  } L2C_310_TypeDef;
+  
+  #define L2C_310           ((L2C_310_TypeDef *)L2C_310_BASE) /*!< \brief L2C_310 register set access pointer */
+#endif /* #if (__L2C_PRESENT == 1U) || defined(DOXYGEN) */
 
 #if (__GIC_PRESENT == 1U) || defined(DOXYGEN)
   #include "gic_v20.h"
 #endif /*  (__GIC_PRESENT == 1U) || defined(DOXYGEN) */
 
 #if (__TIM_PRESENT == 1U) || defined(DOXYGEN)
-#if ((__CORTEX_A == 5U) || (__CORTEX_A == 9U)) || defined(DOXYGEN)
-/** \brief Structure type to access the Private Timer
-*/
-typedef struct
-{
-  __IOM uint32_t LOAD;            //!< \brief  Offset: 0x000 (R/W) Private Timer Load Register
-  __IOM uint32_t COUNTER;         //!< \brief  Offset: 0x004 (R/W) Private Timer Counter Register
-  __IOM uint32_t CONTROL;         //!< \brief  Offset: 0x008 (R/W) Private Timer Control Register
-  __IOM uint32_t ISR;             //!< \brief  Offset: 0x00C (R/W) Private Timer Interrupt Status Register
-        RESERVED(0[4], uint32_t)
-  __IOM uint32_t WLOAD;           //!< \brief  Offset: 0x020 (R/W) Watchdog Load Register
-  __IOM uint32_t WCOUNTER;        //!< \brief  Offset: 0x024 (R/W) Watchdog Counter Register
-  __IOM uint32_t WCONTROL;        //!< \brief  Offset: 0x028 (R/W) Watchdog Control Register
-  __IOM uint32_t WISR;            //!< \brief  Offset: 0x02C (R/W) Watchdog Interrupt Status Register
-  __IOM uint32_t WRESET;          //!< \brief  Offset: 0x030 (R/W) Watchdog Reset Status Register
-  __OM  uint32_t WDISABLE;        //!< \brief  Offset: 0x034 ( /W) Watchdog Disable Register
-} Timer_Type;
-#define PTIM ((Timer_Type *) TIMER_BASE )   /*!< \brief Timer register struct */
-
-/* PTIM Control Register */
-#define PTIM_CONTROL_Enable_Pos             0U                                         /*!< PTIM CONTROL: Enable Position */
-#define PTIM_CONTROL_Enable_Msk             (0x1U /*<< PTIM_CONTROL_Enable_Pos*/)      /*!< PTIM CONTROL: Enable Mask */
-#define PTIM_CONTROL_Enable(x)              (((uint32_t)(((uint32_t)(x)) /*<< PTIM_CONTROL_Enable_Pos*/)) & PTIM_CONTROL_Enable_Msk)
-
-#define PTIM_CONTROL_AutoReload_Pos         1U                                         /*!< PTIM CONTROL: Auto Reload Position */
-#define PTIM_CONTROL_AutoReload_Msk         (0x1U << PTIM_CONTROL_AutoReload_Pos)      /*!< PTIM CONTROL: Auto Reload Mask */
-#define PTIM_CONTROL_AutoReload(x)          (((uint32_t)(((uint32_t)(x)) << PTIM_CONTROL_AutoReload_Pos)) & PTIM_CONTROL_AutoReload_Msk)
-
-#define PTIM_CONTROL_IRQenable_Pos          2U                                         /*!< PTIM CONTROL: IRQ Enabel Position */
-#define PTIM_CONTROL_IRQenable_Msk          (0x1U << PTIM_CONTROL_IRQenable_Pos)       /*!< PTIM CONTROL: IRQ Enabel Mask */
-#define PTIM_CONTROL_IRQenable(x)           (((uint32_t)(((uint32_t)(x)) << PTIM_CONTROL_IRQenable_Pos)) & PTIM_CONTROL_IRQenable_Msk)
-
-#define PTIM_CONTROL_Prescaler_Pos          8U                                         /*!< PTIM CONTROL: Prescaler Position */
-#define PTIM_CONTROL_Prescaler_Msk          (0xFFU << PTIM_CONTROL_Prescaler_Pos)      /*!< PTIM CONTROL: Prescaler Mask */
-#define PTIM_CONTROL_Prescaler(x)           (((uint32_t)(((uint32_t)(x)) << PTIM_CONTROL_Prescaler_Pos)) & PTIM_CONTROL_Prescaler_Msk)
-
-/* WCONTROL Watchdog Control Register */
-#define PTIM_WCONTROL_Enable_Pos            0U                                         /*!< PTIM WCONTROL: Enable Position */
-#define PTIM_WCONTROL_Enable_Msk            (0x1U /*<< PTIM_WCONTROL_Enable_Pos*/)     /*!< PTIM WCONTROL: Enable Mask */
-#define PTIM_WCONTROL_Enable(x)             (((uint32_t)(((uint32_t)(x)) /*<< PTIM_WCONTROL_Enable_Pos*/)) & PTIM_WCONTROL_Enable_Msk)
-
-#define PTIM_WCONTROL_AutoReload_Pos        1U                                         /*!< PTIM WCONTROL: Auto Reload Position */
-#define PTIM_WCONTROL_AutoReload_Msk        (0x1U << PTIM_WCONTROL_AutoReload_Pos)     /*!< PTIM WCONTROL: Auto Reload Mask */
-#define PTIM_WCONTROL_AutoReload(x)         (((uint32_t)(((uint32_t)(x)) << PTIM_WCONTROL_AutoReload_Pos)) & PTIM_WCONTROL_AutoReload_Msk)
-
-#define PTIM_WCONTROL_IRQenable_Pos         2U                                         /*!< PTIM WCONTROL: IRQ Enable Position */
-#define PTIM_WCONTROL_IRQenable_Msk         (0x1U << PTIM_WCONTROL_IRQenable_Pos)      /*!< PTIM WCONTROL: IRQ Enable Mask */
-#define PTIM_WCONTROL_IRQenable(x)          (((uint32_t)(((uint32_t)(x)) << PTIM_WCONTROL_IRQenable_Pos)) & PTIM_WCONTROL_IRQenable_Msk)
-
-#define PTIM_WCONTROL_Mode_Pos              3U                                         /*!< PTIM WCONTROL: Watchdog Mode Position */
-#define PTIM_WCONTROL_Mode_Msk              (0x1U << PTIM_WCONTROL_Mode_Pos)           /*!< PTIM WCONTROL: Watchdog Mode Mask */
-#define PTIM_WCONTROL_Mode(x)               (((uint32_t)(((uint32_t)(x)) << PTIM_WCONTROL_Mode_Pos)) & PTIM_WCONTROL_Mode_Msk)
-
-#define PTIM_WCONTROL_Presacler_Pos         8U                                         /*!< PTIM WCONTROL: Prescaler Position */
-#define PTIM_WCONTROL_Presacler_Msk         (0xFFU << PTIM_WCONTROL_Presacler_Pos)     /*!< PTIM WCONTROL: Prescaler Mask */
-#define PTIM_WCONTROL_Presacler(x)          (((uint32_t)(((uint32_t)(x)) << PTIM_WCONTROL_Presacler_Pos)) & PTIM_WCONTROL_Presacler_Msk)
-
-/* WISR Watchdog Interrupt Status Register */
-#define PTIM_WISR_EventFlag_Pos             0U                                         /*!< PTIM WISR: Event Flag Position */
-#define PTIM_WISR_EventFlag_Msk             (0x1U /*<< PTIM_WISR_EventFlag_Pos*/)      /*!< PTIM WISR: Event Flag Mask */
-#define PTIM_WISR_EventFlag(x)              (((uint32_t)(((uint32_t)(x)) /*<< PTIM_WISR_EventFlag_Pos*/)) & PTIM_WISR_EventFlag_Msk)
-
-/* WRESET Watchdog Reset Status */
-#define PTIM_WRESET_ResetFlag_Pos           0U                                         /*!< PTIM WRESET: Reset Flag Position */
-#define PTIM_WRESET_ResetFlag_Msk           (0x1U /*<< PTIM_WRESET_ResetFlag_Pos*/)    /*!< PTIM WRESET: Reset Flag Mask */
-#define PTIM_WRESET_ResetFlag(x)            (((uint32_t)(((uint32_t)(x)) /*<< PTIM_WRESET_ResetFlag_Pos*/)) & PTIM_WRESET_ResetFlag_Msk)
-
-#endif /* ((__CORTEX_A == 5U) || (__CORTEX_A == 9U)) || defined(DOXYGEN) */
+  #if ((__CORTEX_A == 5U) || (__CORTEX_A == 9U)) || defined(DOXYGEN)
+  /** \brief Structure type to access the Private Timer
+  */
+  typedef struct
+  {
+    __IOM uint32_t LOAD;            //!< \brief  Offset: 0x000 (R/W) Private Timer Load Register
+    __IOM uint32_t COUNTER;         //!< \brief  Offset: 0x004 (R/W) Private Timer Counter Register
+    __IOM uint32_t CONTROL;         //!< \brief  Offset: 0x008 (R/W) Private Timer Control Register
+    __IOM uint32_t ISR;             //!< \brief  Offset: 0x00C (R/W) Private Timer Interrupt Status Register
+          RESERVED(0[4], uint32_t)
+    __IOM uint32_t WLOAD;           //!< \brief  Offset: 0x020 (R/W) Watchdog Load Register
+    __IOM uint32_t WCOUNTER;        //!< \brief  Offset: 0x024 (R/W) Watchdog Counter Register
+    __IOM uint32_t WCONTROL;        //!< \brief  Offset: 0x028 (R/W) Watchdog Control Register
+    __IOM uint32_t WISR;            //!< \brief  Offset: 0x02C (R/W) Watchdog Interrupt Status Register
+    __IOM uint32_t WRESET;          //!< \brief  Offset: 0x030 (R/W) Watchdog Reset Status Register
+    __OM  uint32_t WDISABLE;        //!< \brief  Offset: 0x034 ( /W) Watchdog Disable Register
+  } Timer_Type;
+  #define PTIM ((Timer_Type *) TIMER_BASE )   /*!< \brief Timer register struct */
+  
+  /* PTIM Control Register */
+  #define PTIM_CONTROL_Enable_Pos             0U                                         /*!< PTIM CONTROL: Enable Position */
+  #define PTIM_CONTROL_Enable_Msk             (0x1U /*<< PTIM_CONTROL_Enable_Pos*/)      /*!< PTIM CONTROL: Enable Mask */
+  #define PTIM_CONTROL_Enable(x)              (((uint32_t)(((uint32_t)(x)) /*<< PTIM_CONTROL_Enable_Pos*/)) & PTIM_CONTROL_Enable_Msk)
+  
+  #define PTIM_CONTROL_AutoReload_Pos         1U                                         /*!< PTIM CONTROL: Auto Reload Position */
+  #define PTIM_CONTROL_AutoReload_Msk         (0x1U << PTIM_CONTROL_AutoReload_Pos)      /*!< PTIM CONTROL: Auto Reload Mask */
+  #define PTIM_CONTROL_AutoReload(x)          (((uint32_t)(((uint32_t)(x)) << PTIM_CONTROL_AutoReload_Pos)) & PTIM_CONTROL_AutoReload_Msk)
+  
+  #define PTIM_CONTROL_IRQenable_Pos          2U                                         /*!< PTIM CONTROL: IRQ Enabel Position */
+  #define PTIM_CONTROL_IRQenable_Msk          (0x1U << PTIM_CONTROL_IRQenable_Pos)       /*!< PTIM CONTROL: IRQ Enabel Mask */
+  #define PTIM_CONTROL_IRQenable(x)           (((uint32_t)(((uint32_t)(x)) << PTIM_CONTROL_IRQenable_Pos)) & PTIM_CONTROL_IRQenable_Msk)
+  
+  #define PTIM_CONTROL_Prescaler_Pos          8U                                         /*!< PTIM CONTROL: Prescaler Position */
+  #define PTIM_CONTROL_Prescaler_Msk          (0xFFU << PTIM_CONTROL_Prescaler_Pos)      /*!< PTIM CONTROL: Prescaler Mask */
+  #define PTIM_CONTROL_Prescaler(x)           (((uint32_t)(((uint32_t)(x)) << PTIM_CONTROL_Prescaler_Pos)) & PTIM_CONTROL_Prescaler_Msk)
+  
+  /* WCONTROL Watchdog Control Register */
+  #define PTIM_WCONTROL_Enable_Pos            0U                                         /*!< PTIM WCONTROL: Enable Position */
+  #define PTIM_WCONTROL_Enable_Msk            (0x1U /*<< PTIM_WCONTROL_Enable_Pos*/)     /*!< PTIM WCONTROL: Enable Mask */
+  #define PTIM_WCONTROL_Enable(x)             (((uint32_t)(((uint32_t)(x)) /*<< PTIM_WCONTROL_Enable_Pos*/)) & PTIM_WCONTROL_Enable_Msk)
+  
+  #define PTIM_WCONTROL_AutoReload_Pos        1U                                         /*!< PTIM WCONTROL: Auto Reload Position */
+  #define PTIM_WCONTROL_AutoReload_Msk        (0x1U << PTIM_WCONTROL_AutoReload_Pos)     /*!< PTIM WCONTROL: Auto Reload Mask */
+  #define PTIM_WCONTROL_AutoReload(x)         (((uint32_t)(((uint32_t)(x)) << PTIM_WCONTROL_AutoReload_Pos)) & PTIM_WCONTROL_AutoReload_Msk)
+  
+  #define PTIM_WCONTROL_IRQenable_Pos         2U                                         /*!< PTIM WCONTROL: IRQ Enable Position */
+  #define PTIM_WCONTROL_IRQenable_Msk         (0x1U << PTIM_WCONTROL_IRQenable_Pos)      /*!< PTIM WCONTROL: IRQ Enable Mask */
+  #define PTIM_WCONTROL_IRQenable(x)          (((uint32_t)(((uint32_t)(x)) << PTIM_WCONTROL_IRQenable_Pos)) & PTIM_WCONTROL_IRQenable_Msk)
+  
+  #define PTIM_WCONTROL_Mode_Pos              3U                                         /*!< PTIM WCONTROL: Watchdog Mode Position */
+  #define PTIM_WCONTROL_Mode_Msk              (0x1U << PTIM_WCONTROL_Mode_Pos)           /*!< PTIM WCONTROL: Watchdog Mode Mask */
+  #define PTIM_WCONTROL_Mode(x)               (((uint32_t)(((uint32_t)(x)) << PTIM_WCONTROL_Mode_Pos)) & PTIM_WCONTROL_Mode_Msk)
+  
+  #define PTIM_WCONTROL_Presacler_Pos         8U                                         /*!< PTIM WCONTROL: Prescaler Position */
+  #define PTIM_WCONTROL_Presacler_Msk         (0xFFU << PTIM_WCONTROL_Presacler_Pos)     /*!< PTIM WCONTROL: Prescaler Mask */
+  #define PTIM_WCONTROL_Presacler(x)          (((uint32_t)(((uint32_t)(x)) << PTIM_WCONTROL_Presacler_Pos)) & PTIM_WCONTROL_Presacler_Msk)
+  
+  /* WISR Watchdog Interrupt Status Register */
+  #define PTIM_WISR_EventFlag_Pos             0U                                         /*!< PTIM WISR: Event Flag Position */
+  #define PTIM_WISR_EventFlag_Msk             (0x1U /*<< PTIM_WISR_EventFlag_Pos*/)      /*!< PTIM WISR: Event Flag Mask */
+  #define PTIM_WISR_EventFlag(x)              (((uint32_t)(((uint32_t)(x)) /*<< PTIM_WISR_EventFlag_Pos*/)) & PTIM_WISR_EventFlag_Msk)
+  
+  /* WRESET Watchdog Reset Status */
+  #define PTIM_WRESET_ResetFlag_Pos           0U                                         /*!< PTIM WRESET: Reset Flag Position */
+  #define PTIM_WRESET_ResetFlag_Msk           (0x1U /*<< PTIM_WRESET_ResetFlag_Pos*/)    /*!< PTIM WRESET: Reset Flag Mask */
+  #define PTIM_WRESET_ResetFlag(x)            (((uint32_t)(((uint32_t)(x)) /*<< PTIM_WRESET_ResetFlag_Pos*/)) & PTIM_WRESET_ResetFlag_Msk)
+  
+  #endif /* ((__CORTEX_A == 5U) || (__CORTEX_A == 9U)) || defined(DOXYGEN) */
 #endif /* (__TIM_PRESENT == 1U) || defined(DOXYGEN) */
 
  /*******************************************************************************
@@ -1022,267 +1022,266 @@ __STATIC_FORCEINLINE void L1C_CleanInvalidateDCacheAll(void) {
 
 /* ##########################  L2 Cache functions  ################################# */
 #if (__L2C_PRESENT == 1U) || defined(DOXYGEN)
-/** \brief Cache Sync operation by writing CACHE_SYNC register.
-*/
-__STATIC_INLINE void L2C_Sync(void)
-{
-  L2C_310->CACHE_SYNC = 0x0;
-}
-
-/** \brief Read cache controller cache ID from CACHE_ID register.
- * \return L2C_310_TypeDef::CACHE_ID
- */
-__STATIC_INLINE int L2C_GetID (void)
-{
-  return L2C_310->CACHE_ID;
-}
-
-/** \brief Read cache controller cache type from CACHE_TYPE register.
-*  \return L2C_310_TypeDef::CACHE_TYPE
-*/
-__STATIC_INLINE int L2C_GetType (void)
-{
-  return L2C_310->CACHE_TYPE;
-}
-
-/** \brief Invalidate all cache by way
-*/
-__STATIC_INLINE void L2C_InvAllByWay (void)
-{
-  unsigned int assoc;
-
-  if (L2C_310->AUX_CNT & (1U << 16U)) {
-    assoc = 16U;
-  } else {
-    assoc =  8U;
+  /** \brief Cache Sync operation by writing CACHE_SYNC register.
+  */
+  __STATIC_INLINE void L2C_Sync(void)
+  {
+    L2C_310->CACHE_SYNC = 0x0;
   }
   
-  L2C_310->INV_WAY = (1U << assoc) - 1U;
-  while(L2C_310->INV_WAY & ((1U << assoc) - 1U)); //poll invalidate
-
-  L2C_Sync();
-}
-
-/** \brief Clean and Invalidate all cache by way
-*/
-__STATIC_INLINE void L2C_CleanInvAllByWay (void)
-{
-  unsigned int assoc;
-
-  if (L2C_310->AUX_CNT & (1U << 16U)) {
-    assoc = 16U;
-  } else {
-    assoc =  8U;
+  /** \brief Read cache controller cache ID from CACHE_ID register.
+   * \return L2C_310_TypeDef::CACHE_ID
+   */
+  __STATIC_INLINE int L2C_GetID (void)
+  {
+    return L2C_310->CACHE_ID;
   }
-
-  L2C_310->CLEAN_INV_WAY = (1U << assoc) - 1U;
-  while(L2C_310->CLEAN_INV_WAY & ((1U << assoc) - 1U)); //poll invalidate
-
-  L2C_Sync();
-}
-
-/** \brief Enable Level 2 Cache
-*/
-__STATIC_INLINE void L2C_Enable(void)
-{
-  L2C_310->CONTROL = 0;
-  L2C_310->INTERRUPT_CLEAR = 0x000001FFuL;
-  L2C_310->DEBUG_CONTROL = 0;
-  L2C_310->DATA_LOCK_0_WAY = 0;
-  L2C_310->CACHE_SYNC = 0;
-  L2C_310->CONTROL = 0x01;
-  L2C_Sync();
-}
-
-/** \brief Disable Level 2 Cache
-*/
-__STATIC_INLINE void L2C_Disable(void)
-{
-  L2C_310->CONTROL = 0x00;
-  L2C_Sync();
-}
-
-/** \brief Invalidate cache by physical address
-* \param [in] pa Pointer to data to invalidate cache for.
-*/
-__STATIC_INLINE void L2C_InvPa (void *pa)
-{
-  L2C_310->INV_LINE_PA = (unsigned int)pa;
-  L2C_Sync();
-}
-
-/** \brief Clean cache by physical address
-* \param [in] pa Pointer to data to invalidate cache for.
-*/
-__STATIC_INLINE void L2C_CleanPa (void *pa)
-{
-  L2C_310->CLEAN_LINE_PA = (unsigned int)pa;
-  L2C_Sync();
-}
-
-/** \brief Clean and invalidate cache by physical address
-* \param [in] pa Pointer to data to invalidate cache for.
-*/
-__STATIC_INLINE void L2C_CleanInvPa (void *pa)
-{
-  L2C_310->CLEAN_INV_LINE_PA = (unsigned int)pa;
-  L2C_Sync();
-}
-#endif
+  
+  /** \brief Read cache controller cache type from CACHE_TYPE register.
+  *  \return L2C_310_TypeDef::CACHE_TYPE
+  */
+  __STATIC_INLINE int L2C_GetType (void)
+  {
+    return L2C_310->CACHE_TYPE;
+  }
+  
+  /** \brief Invalidate all cache by way
+  */
+  __STATIC_INLINE void L2C_InvAllByWay (void)
+  {
+    unsigned int assoc;
+  
+    if (L2C_310->AUX_CNT & (1U << 16U)) {
+      assoc = 16U;
+    } else {
+      assoc =  8U;
+    }
+    
+    L2C_310->INV_WAY = (1U << assoc) - 1U;
+    while(L2C_310->INV_WAY & ((1U << assoc) - 1U)); //poll invalidate
+  
+    L2C_Sync();
+  }
+  
+  /** \brief Clean and Invalidate all cache by way
+  */
+  __STATIC_INLINE void L2C_CleanInvAllByWay (void)
+  {
+    unsigned int assoc;
+  
+    if (L2C_310->AUX_CNT & (1U << 16U)) {
+      assoc = 16U;
+    } else {
+      assoc =  8U;
+    }
+  
+    L2C_310->CLEAN_INV_WAY = (1U << assoc) - 1U;
+    while(L2C_310->CLEAN_INV_WAY & ((1U << assoc) - 1U)); //poll invalidate
+  
+    L2C_Sync();
+  }
+  
+  /** \brief Enable Level 2 Cache
+  */
+  __STATIC_INLINE void L2C_Enable(void)
+  {
+    L2C_310->CONTROL = 0;
+    L2C_310->INTERRUPT_CLEAR = 0x000001FFuL;
+    L2C_310->DEBUG_CONTROL = 0;
+    L2C_310->DATA_LOCK_0_WAY = 0;
+    L2C_310->CACHE_SYNC = 0;
+    L2C_310->CONTROL = 0x01;
+    L2C_Sync();
+  }
+  
+  /** \brief Disable Level 2 Cache
+  */
+  __STATIC_INLINE void L2C_Disable(void)
+  {
+    L2C_310->CONTROL = 0x00;
+    L2C_Sync();
+  }
+  
+  /** \brief Invalidate cache by physical address
+  * \param [in] pa Pointer to data to invalidate cache for.
+  */
+  __STATIC_INLINE void L2C_InvPa (void *pa)
+  {
+    L2C_310->INV_LINE_PA = (unsigned int)pa;
+    L2C_Sync();
+  }
+  
+  /** \brief Clean cache by physical address
+  * \param [in] pa Pointer to data to invalidate cache for.
+  */
+  __STATIC_INLINE void L2C_CleanPa (void *pa)
+  {
+    L2C_310->CLEAN_LINE_PA = (unsigned int)pa;
+    L2C_Sync();
+  }
+  
+  /** \brief Clean and invalidate cache by physical address
+  * \param [in] pa Pointer to data to invalidate cache for.
+  */
+  __STATIC_INLINE void L2C_CleanInvPa (void *pa)
+  {
+    L2C_310->CLEAN_INV_LINE_PA = (unsigned int)pa;
+    L2C_Sync();
+  }
+#endif /* #if (__L2C_PRESENT == 1U) || defined(DOXYGEN) */
 
 /* ##########################  Generic Timer functions  ############################ */
 #if (__TIM_PRESENT == 1U) || defined(DOXYGEN)
   
 /* PL1 Physical Timer */
 #if (__CORTEX_A == 7U) || defined(DOXYGEN)
-  
-/** \brief Physical Timer Control register */
-typedef union
-{
-  struct
+  /** \brief Physical Timer Control register */
+  typedef union
   {
-    uint32_t ENABLE:1;      /*!< \brief bit: 0      Enables the timer. */
-    uint32_t IMASK:1;       /*!< \brief bit: 1      Timer output signal mask bit. */
-    uint32_t ISTATUS:1;     /*!< \brief bit: 2      The status of the timer. */
-    RESERVED(0:29, uint32_t)
-  } b;                      /*!< \brief Structure used for bit  access */
-  uint32_t w;               /*!< \brief Type      used for word access */
-} CNTP_CTL_Type;
-
-/** \brief Configures the frequency the timer shall run at.
-* \param [in] value The timer frequency in Hz.
-*/
-__STATIC_INLINE void PL1_SetCounterFrequency(uint32_t value)
-{
-  __set_CNTFRQ(value);
-  __ISB();
-}
-
-/** \brief Sets the reset value of the timer.
-* \param [in] value The value the timer is loaded with.
-*/
-__STATIC_INLINE void PL1_SetLoadValue(uint32_t value)
-{
-  __set_CNTP_TVAL(value);
-  __ISB();
-}
-
-/** \brief Get the current counter value.
-* \return Current counter value.
-*/
-__STATIC_INLINE uint32_t PL1_GetCurrentValue(void)
-{
-  return(__get_CNTP_TVAL());
-}
-
-/** \brief Get the current physical counter value.
-* \return Current physical counter value.
-*/
-__STATIC_INLINE uint64_t PL1_GetCurrentPhysicalValue(void)
-{
-  return(__get_CNTPCT());
-}
-
-/** \brief Set the physical compare value.
-* \param [in] value New physical timer compare value.
-*/
-__STATIC_INLINE void PL1_SetPhysicalCompareValue(uint64_t value)
-{
-  __set_CNTP_CVAL(value);
-  __ISB();
-}
-
-/** \brief Get the physical compare value.
-* \return Physical compare value.
-*/
-__STATIC_INLINE uint64_t PL1_GetPhysicalCompareValue(void)
-{
-  return(__get_CNTP_CVAL());
-}
-
-/** \brief Configure the timer by setting the control value.
-* \param [in] value New timer control value.
-*/
-__STATIC_INLINE void PL1_SetControl(uint32_t value)
-{
-  __set_CNTP_CTL(value);
-  __ISB();
-}
-
-/** \brief Get the control value.
-* \return Control value.
-*/
-__STATIC_INLINE uint32_t PL1_GetControl(void)
-{
-  return(__get_CNTP_CTL());
-}
-#endif
+    struct
+    {
+      uint32_t ENABLE:1;      /*!< \brief bit: 0      Enables the timer. */
+      uint32_t IMASK:1;       /*!< \brief bit: 1      Timer output signal mask bit. */
+      uint32_t ISTATUS:1;     /*!< \brief bit: 2      The status of the timer. */
+      RESERVED(0:29, uint32_t)
+    } b;                      /*!< \brief Structure used for bit  access */
+    uint32_t w;               /*!< \brief Type      used for word access */
+  } CNTP_CTL_Type;
+  
+  /** \brief Configures the frequency the timer shall run at.
+  * \param [in] value The timer frequency in Hz.
+  */
+  __STATIC_INLINE void PL1_SetCounterFrequency(uint32_t value)
+  {
+    __set_CNTFRQ(value);
+    __ISB();
+  }
+  
+  /** \brief Sets the reset value of the timer.
+  * \param [in] value The value the timer is loaded with.
+  */
+  __STATIC_INLINE void PL1_SetLoadValue(uint32_t value)
+  {
+    __set_CNTP_TVAL(value);
+    __ISB();
+  }
+  
+  /** \brief Get the current counter value.
+  * \return Current counter value.
+  */
+  __STATIC_INLINE uint32_t PL1_GetCurrentValue(void)
+  {
+    return(__get_CNTP_TVAL());
+  }
+  
+  /** \brief Get the current physical counter value.
+  * \return Current physical counter value.
+  */
+  __STATIC_INLINE uint64_t PL1_GetCurrentPhysicalValue(void)
+  {
+    return(__get_CNTPCT());
+  }
+  
+  /** \brief Set the physical compare value.
+  * \param [in] value New physical timer compare value.
+  */
+  __STATIC_INLINE void PL1_SetPhysicalCompareValue(uint64_t value)
+  {
+    __set_CNTP_CVAL(value);
+    __ISB();
+  }
+  
+  /** \brief Get the physical compare value.
+  * \return Physical compare value.
+  */
+  __STATIC_INLINE uint64_t PL1_GetPhysicalCompareValue(void)
+  {
+    return(__get_CNTP_CVAL());
+  }
+  
+  /** \brief Configure the timer by setting the control value.
+  * \param [in] value New timer control value.
+  */
+  __STATIC_INLINE void PL1_SetControl(uint32_t value)
+  {
+    __set_CNTP_CTL(value);
+    __ISB();
+  }
+  
+  /** \brief Get the control value.
+  * \return Control value.
+  */
+  __STATIC_INLINE uint32_t PL1_GetControl(void)
+  {
+    return(__get_CNTP_CTL());
+  }
+#endif /* (__CORTEX_A == 7U) || defined(DOXYGEN) */
 
 /* Private Timer */
 #if ((__CORTEX_A == 5U) || (__CORTEX_A == 9U)) || defined(DOXYGEN)
-/** \brief Set the load value to timers LOAD register.
-* \param [in] value The load value to be set.
-*/
-__STATIC_INLINE void PTIM_SetLoadValue(uint32_t value)
-{
-  PTIM->LOAD = value;
-}
-
-/** \brief Get the load value from timers LOAD register.
-* \return Timer_Type::LOAD
-*/
-__STATIC_INLINE uint32_t PTIM_GetLoadValue(void)
-{
-  return(PTIM->LOAD);
-}
-
-/** \brief Set current counter value from its COUNTER register.
-*/
-__STATIC_INLINE void PTIM_SetCurrentValue(uint32_t value)
-{
-  PTIM->COUNTER = value;
-}
-
-/** \brief Get current counter value from timers COUNTER register.
-* \result Timer_Type::COUNTER
-*/
-__STATIC_INLINE uint32_t PTIM_GetCurrentValue(void)
-{
-  return(PTIM->COUNTER);
-}
-
-/** \brief Configure the timer using its CONTROL register.
-* \param [in] value The new configuration value to be set.
-*/
-__STATIC_INLINE void PTIM_SetControl(uint32_t value)
-{
-  PTIM->CONTROL = value;
-}
-
-/** ref Timer_Type::CONTROL Get the current timer configuration from its CONTROL register.
-* \return Timer_Type::CONTROL
-*/
-__STATIC_INLINE uint32_t PTIM_GetControl(void)
-{
-  return(PTIM->CONTROL);
-}
-
-/** ref Timer_Type::CONTROL Get the event flag in timers ISR register.
-* \return 0 - flag is not set, 1- flag is set
-*/
-__STATIC_INLINE uint32_t PTIM_GetEventFlag(void)
-{
-  return (PTIM->ISR & 1UL);
-}
-
-/** ref Timer_Type::CONTROL Clears the event flag in timers ISR register.
-*/
-__STATIC_INLINE void PTIM_ClearEventFlag(void)
-{
-  PTIM->ISR = 1;
-}
-#endif
-#endif
+  /** \brief Set the load value to timers LOAD register.
+  * \param [in] value The load value to be set.
+  */
+  __STATIC_INLINE void PTIM_SetLoadValue(uint32_t value)
+  {
+    PTIM->LOAD = value;
+  }
+  
+  /** \brief Get the load value from timers LOAD register.
+  * \return Timer_Type::LOAD
+  */
+  __STATIC_INLINE uint32_t PTIM_GetLoadValue(void)
+  {
+    return(PTIM->LOAD);
+  }
+  
+  /** \brief Set current counter value from its COUNTER register.
+  */
+  __STATIC_INLINE void PTIM_SetCurrentValue(uint32_t value)
+  {
+    PTIM->COUNTER = value;
+  }
+  
+  /** \brief Get current counter value from timers COUNTER register.
+  * \result Timer_Type::COUNTER
+  */
+  __STATIC_INLINE uint32_t PTIM_GetCurrentValue(void)
+  {
+    return(PTIM->COUNTER);
+  }
+  
+  /** \brief Configure the timer using its CONTROL register.
+  * \param [in] value The new configuration value to be set.
+  */
+  __STATIC_INLINE void PTIM_SetControl(uint32_t value)
+  {
+    PTIM->CONTROL = value;
+  }
+  
+  /** ref Timer_Type::CONTROL Get the current timer configuration from its CONTROL register.
+  * \return Timer_Type::CONTROL
+  */
+  __STATIC_INLINE uint32_t PTIM_GetControl(void)
+  {
+    return(PTIM->CONTROL);
+  }
+  
+  /** ref Timer_Type::CONTROL Get the event flag in timers ISR register.
+  * \return 0 - flag is not set, 1- flag is set
+  */
+  __STATIC_INLINE uint32_t PTIM_GetEventFlag(void)
+  {
+    return (PTIM->ISR & 1UL);
+  }
+  
+  /** ref Timer_Type::CONTROL Clears the event flag in timers ISR register.
+  */
+  __STATIC_INLINE void PTIM_ClearEventFlag(void)
+  {
+    PTIM->ISR = 1;
+  }
+#endif /* #if ((__CORTEX_A == 5U) || (__CORTEX_A == 9U)) || defined(DOXYGEN) */
+#endif /* (__TIM_PRESENT == 1U) || defined(DOXYGEN) */
 
 /* ##########################  MMU functions  ###################################### */
 
@@ -2199,7 +2198,6 @@ __STATIC_INLINE void MMU_Disable(void)
 
 /** \brief  Invalidate entire unified TLB
 */
-
 __STATIC_INLINE void MMU_InvalidateTLB(void)
 {
   __set_TLBIALL(0);

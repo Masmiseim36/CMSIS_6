@@ -469,9 +469,9 @@ __attribute__((section(".revsh_text"))) __STATIC_INLINE __ASM int16_t __REVSH(in
   /**
     \brief   Unsigned Saturate
     \details Saturates an unsigned value.
-    \param [in]  value  Value to be saturated
-    \param [in]    sat  Bit position to saturate to (0..31)
-    \return             Saturated value
+    \param [in]  val  Value to be saturated
+    \param [in]  sat  Bit position to saturate to (0..31)
+    \return           Saturated value
    */
   __attribute__((always_inline)) __STATIC_INLINE uint32_t __USAT(int32_t val, uint32_t sat)
   {
@@ -493,7 +493,7 @@ __attribute__((section(".revsh_text"))) __STATIC_INLINE __ASM int16_t __REVSH(in
           (defined (__ARM_ARCH_7M__ ) && (__ARM_ARCH_7M__  == 1)) || \
           (defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     ) */
 
-/*@}*/ /* end of group CMSIS_Core_InstructionInterface */
+/** @} end of group CMSIS_Core_InstructionInterface */
 
 
 /* ###########################  Core Function Access  ########################### */
@@ -516,24 +516,24 @@ __attribute__((section(".revsh_text"))) __STATIC_INLINE __ASM int16_t __REVSH(in
  */
 /* intrinsic void __disable_irq(void); */
 
-#if ((defined (__arm__         ) || \
+#if ((defined (__arm__         )) || \
      (defined (__ARM_ARCH_7M__ ) && (__ARM_ARCH_7M__  == 1)) || \
      (defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     )
 
-/**
-  \brief   Enable FIQ
-  \details Enables FIQ interrupts by clearing special-purpose register FAULTMASK.
-           Can only be executed in Privileged modes.
- */
-#define __enable_fault_irq                __enable_fiq
+  /**
+    \brief   Enable FIQ
+    \details Enables FIQ interrupts by clearing special-purpose register FAULTMASK.
+             Can only be executed in Privileged modes.
+   */
+  #define __enable_fault_irq                __enable_fiq
 
 
-/**
-  \brief   Disable FIQ
-  \details Disables FIQ interrupts by setting special-purpose register FAULTMASK.
-           Can only be executed in Privileged modes.
- */
-#define __disable_fault_irq               __disable_fiq
+  /**
+    \brief   Disable FIQ
+    \details Disables FIQ interrupts by setting special-purpose register FAULTMASK.
+             Can only be executed in Privileged modes.
+   */
+  #define __disable_fault_irq               __disable_fiq
 
 #endif /* ( defined (__arm__         ) || \
            (defined (__ARM_ARCH_7M__ ) && (__ARM_ARCH_7M__  == 1)) || \
@@ -653,6 +653,6 @@ __STATIC_INLINE void __set_FPSCR(uint32_t fpscr)
 
   #define __SXTAB16_RORn(ARG1, ARG2, ARG3) __SXTAB16(ARG1, __ROR(ARG2, ARG3))
 #endif /* ((defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     ) */
-/*@} end of group CMSIS_SIMD_intrinsics */
+/** @} end of group CMSIS_SIMD_intrinsics */
 
 #endif /* __CMSIS_ARMCC_H */
