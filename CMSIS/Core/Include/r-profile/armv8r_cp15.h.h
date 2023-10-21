@@ -1,5 +1,5 @@
 /**************************************************************************//**
- * @file     armv8r_system_control.h
+ * @file     armv7r_cp15.h
  * @brief    CMSIS compiler specific macros, functions, instructions
  * @version  V6.0.0
  * @date     4. August 2023

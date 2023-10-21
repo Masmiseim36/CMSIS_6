@@ -923,7 +923,7 @@ INPUT                  = ./src/mainpage.md \
                          ./src/misra.md \
                          ./../../Core/Include/core_ca.h \
                          ./../../Core/Include/a-profile/cmsis_armclang_a.h \
-                         ./../../Core/Include/a-profile/cmsis_cp15.h \
+                         ./../../Core/Include/a-profile/armv7a_cp15.h \
                          ./../../Core/Include/a-profile/irq_ctrl.h \
                          ./../../Core/Source/irq_ctrl_gic.c \
                          ./src/Ref_SystemAndClock.txt \
