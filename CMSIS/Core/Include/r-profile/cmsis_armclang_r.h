@@ -1,8 +1,8 @@
 /**************************************************************************//**
- * @file     cmsis_armclang_a.h
+ * @file     cmsis_armclang_r.h
  * @brief    CMSIS compiler armclang (Arm Compiler 6) header file
- * @version  V6.0.0
- * @date     11. October 2023
+ * @version  V5.0.0
+ * @date     04. December 2022
  ******************************************************************************/
 /*
  * Copyright (c) 2009-2023 Arm Limited. All rights reserved.
@@ -22,8 +22,8 @@
  * limitations under the License.
  */
 
-#ifndef __CMSIS_ARMCLANG_A_H
-#define __CMSIS_ARMCLANG_A_H
+#ifndef __CMSIS_ARMCLANG_R_H
+#define __CMSIS_ARMCLANG_R_H
 
 #pragma clang system_header   /* treat file as system include file */
 
@@ -158,4 +158,4 @@ __STATIC_FORCEINLINE void __set_FPEXC(uint32_t fpexc)
 #define __get_CP64(cp, op1, Rt, CRm)         __ASM volatile("MRRC p" # cp ", " # op1 ", %Q0, %R0, c" # CRm  : "=r" (Rt) : : "memory" )
 #define __set_CP64(cp, op1, Rt, CRm)         __ASM volatile("MCRR p" # cp ", " # op1 ", %Q0, %R0, c" # CRm  : : "r" (Rt) : "memory" )
 
-#endif /* __CMSIS_CLANG_COREA_H */
+#endif /* __CMSIS_ARMCLANG_R_H */

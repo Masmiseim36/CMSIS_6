@@ -45,12 +45,15 @@
 
 #include "cmsis_version.h"
 
+/** __FPU_USED indicates whether an FPU is used or not.
+    For this, __FPU_PRESENT has to be checked prior to making use of FPU specific registers and functions.
+*/
 #if defined ( __CC_ARM )
   #if defined (__TARGET_FPU_VFP)
     #if defined (__FPU_PRESENT) && (__FPU_PRESENT == 1U)
       #define __FPU_USED       1U
     #else
-      #warning "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+      #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
       #define __FPU_USED       0U
     #endif
   #else
@@ -74,7 +77,7 @@
     #if defined (__FPU_PRESENT) && (__FPU_PRESENT == 1U)
       #define __FPU_USED       1U
     #else
-      #warning "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+      #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
       #define __FPU_USED       0U
     #endif
   #else
@@ -98,7 +101,7 @@
     #if defined (__FPU_PRESENT) && (__FPU_PRESENT == 1U)
       #define __FPU_USED       1U
     #else
-      #warning "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+      #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
       #define __FPU_USED       0U
     #endif
   #else
