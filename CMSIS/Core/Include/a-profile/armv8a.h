@@ -628,6 +628,13 @@ __STATIC_INLINE void MMU_InvalidateTLB(void)
 
 
 
+/* ##########################  GIC functions  ###################################### */
+#if defined (__GIC_PRESENT) && (__GIC_PRESENT == 1U)
+  #include "gicv3.h"
+#endif
+
+
+
 /** \brief  Enable Floating Point Unit */
 __STATIC_INLINE void __FPU_Enable(void)
 {

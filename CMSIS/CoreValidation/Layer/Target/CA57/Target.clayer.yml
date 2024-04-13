@@ -1,0 +1,42 @@
+layer:
+  type: Target
+  description: CA57 target components and files
+
+  packs:
+    - pack: ARM::Cortex_DFP
+
+  device: ARMCA57
+
+  components:
+    # [Cvendor::] Cclass [&Cbundle] :Cgroup [:Csub] [&Cvariant] [@[>=]Cversion]
+    - component: ARM::CMSIS:CORE
+    - component: Device:Startup
+    - component: Device:IRQ Controller:GIC
+
+  misc:
+    - for-compiler: IAR
+      Link: [--config generic_cortex.icf]
+
+  linker:
+    - script: RTE/Device/ARMCA57/ARMCA57_ac6.sct
+      for-compiler:
+        - AC6
+    - script: RTE/Device/ARMCA57/ARMCA57_gcc.ld
+      for-compiler:
+        - GCC
+    - script: RTE/Device/ARMCA57/ARMCA57_clang.ld
+      for-compiler:
+        - CLANG
+    - script: RTE/Device/ARMCA57/ARMCA57_iar.icf
+      for-compiler:
+        - IAR
+    - regions: RTE/Device/ARMCA57/mem_ARMCA57.h
+      for-compiler:
+        - AC6
+        - GCC
+        - CLANG
+
+  groups:
+    - group: FVP
+      files:
+        - file: ./model_config.txt

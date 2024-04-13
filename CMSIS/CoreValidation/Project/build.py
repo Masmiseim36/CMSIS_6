@@ -43,6 +43,14 @@ class DeviceAxis(Enum):
     CA5 = ('Cortex-A5', 'CA5')
     CA7 = ('Cortex-A7', 'CA7')
     CA9 = ('Cortex-A9', 'CA9')
+    CA35 = ('Cortex-A35', 'CA35')
+    CA53 = ('Cortex-A53', 'CA53')
+    CA55 = ('Cortex-A55', 'CA55')
+    CA57 = ('Cortex-A57', 'CA57')
+    CR4  = ('Cortex-R4',  'CR4')
+    CR5  = ('Cortex-R5',  'CR5')
+    CR7  = ('Cortex-R7',  'CR7')
+    CR8  = ('Cortex-R8',  'CR8')
 #    CA5NEON = ('Cortex-A5neon', 'CA5neon')
 #    CA7NEON = ('Cortex-A7neon', 'CA7neon')
 #    CA9NEON = ('Cortex-A9neon', 'CA9neon')
@@ -133,6 +141,14 @@ MODEL_EXECUTABLE = {
     DeviceAxis.CA5: ("FVP_VE_Cortex-A5x1", []),
     DeviceAxis.CA7: ("FVP_VE_Cortex-A7x1", []),
     DeviceAxis.CA9: ("FVP_VE_Cortex-A9x1", []),
+    DeviceAxis.CA35: ("FVP_Base_Cortex-A35x1", []),
+    DeviceAxis.CA53: ("FVP_Base_Cortex-A53x1", []),
+    DeviceAxis.CA55: ("FVP_Base_Cortex-A55", []),
+    DeviceAxis.CA57: ("FVP_Base_Cortex-A57x1", []),
+    DeviceAxis.CR4:  ("FVP_VE_Cortex-R4", []),
+    DeviceAxis.CR5:  ("FVP_VE_Cortex-R5x1", []),
+    DeviceAxis.CR7:  ("FVP_VE_Cortex-R7x1", []),
+    DeviceAxis.CR8:  ("FVP_VE_Cortex-R8x1", []),
 #    DeviceAxis.CA5NEON: ("_VE_Cortex-A5x1", []),
 #    DeviceAxis.CA7NEON: ("_VE_Cortex-A7x1", []),
 #    DeviceAxis.CA9NEON: ("_VE_Cortex-A9x1", [])

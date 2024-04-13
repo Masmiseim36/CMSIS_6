@@ -632,6 +632,24 @@
       <accept Dcore="Cortex-R8"/>
     </condition>
 
+    <condition id="GICv2">
+      <description>GIC in version two is used</description>
+      <accept Dcore="Cortex-A5"/>
+      <accept Dcore="Cortex-A7"/>
+      <accept Dcore="Cortex-A9"/>
+      <accept Dcore="Cortex-A35"/>
+      <accept Dcore="Cortex-R4"/>
+      <accept Dcore="Cortex-R5"/>
+      <accept Dcore="Cortex-R7"/>
+      <accept Dcore="Cortex-R8"/>
+    </condition>
+    <condition id="GICv3">
+      <description>GIC in version three or four is used</description>
+      <accept Dcore="Cortex-A53"/>
+      <accept Dcore="Cortex-A55"/>
+      <accept Dcore="Cortex-A57"/>
+    </condition>
+
     <condition id="TrustZone">
       <description>TrustZone</description>
       <require Dtz="TZ"/>
@@ -697,8 +715,15 @@
     </component>
 
     <!-- IRQ Controller -->
-    <component Cclass="Device" Cgroup="IRQ Controller" Csub="GIC" Capiversion="1.0.0" Cversion="1.2.0" condition="ARMv7-A Device">
+    <component Cclass="Device" Cgroup="IRQ Controller" Csub="GIC" Capiversion="1.0.0" Cversion="1.2.0" condition="GICv2">
       <description>IRQ Controller implementation using GIC</description>
+      <files>
+        <file category="sourceC" name="CMSIS/Core/Source/irq_ctrl_gic.c"/>
+      </files>
+    </component>
+
+    <component Cclass="Device" Cgroup="IRQ Controller" Csub="GICv3_v4" Capiversion="1.0.0" Cversion="1.2.0" condition="GICv3">
+      <description>IRQ Controller implementation using GIC version tree or four</description>
       <files>
         <file category="sourceC" name="CMSIS/Core/Source/irq_ctrl_gic.c"/>
       </files>

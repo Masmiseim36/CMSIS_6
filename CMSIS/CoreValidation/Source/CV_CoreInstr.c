@@ -47,6 +47,7 @@ void TC_CoreInstr_SEV (void) {
   ASSERT_TRUE(1U == 1U);
 }
 
+#if !defined __aarch64__
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
 \brief Test case: TC_CoreInstr_BKPT
@@ -58,6 +59,7 @@ void TC_CoreInstr_BKPT (void) {
   __BKPT(0xABU);
   ASSERT_TRUE(1U == 1U);
 }
+#endif
 
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
@@ -400,7 +402,7 @@ void TC_CoreInstr_RRX (void) {
      (defined (__ARM_ARCH_8M_MAIN__   ) && (__ARM_ARCH_8M_MAIN__   == 1)) || \
      (defined (__ARM_ARCH_8M_BASE__   ) && (__ARM_ARCH_8M_BASE__   == 1)) || \
      (defined (__ARM_ARCH_8_1M_MAIN__ ) && (__ARM_ARCH_8_1M_MAIN__ == 1)) || \
-     (defined(__CORTEX_A)                                               )    )
+     (defined (__CORTEX_A)                                              )    )
 
 /// Exclusive byte value
 static volatile uint8_t TC_CoreInstr_LoadStoreExclusive_byte = 0x47U;

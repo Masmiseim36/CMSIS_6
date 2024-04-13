@@ -34,8 +34,16 @@ layer:
       files:
         - file: ../../../Source/cmsis_cv.c
         - file: ../../../Source/CV_CoreAFunc.c
+          for-context:
+            - +CA5
+            - +CA7
+            - +CA9
         - file: ../../../Source/CV_CoreInstr.c
         - file: ../../../Source/CV_CAL1Cache.c
+          for-context:
+            - +CA5
+            - +CA7
+            - +CA9
 #        - file: ../../../Source/ConfigA/mmu.c
 
     - group: Validation Framework

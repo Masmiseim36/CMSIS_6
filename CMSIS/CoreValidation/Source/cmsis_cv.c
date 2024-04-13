@@ -114,7 +114,7 @@ static TEST_CASE TC_LIST[] = {
     TCD ( TC_CoreFunc_FPUType,                     TC_COREFUNC_FPUTYPE_EN                    ),
     TCD ( TC_CoreFunc_FPSCR,                       TC_COREFUNC_FPSCR_EN                      ),
 
-  #elif defined(__CORTEX_A)
+  #elif defined(__CORTEX_A) && (__CORTEX_A == 5 || __CORTEX_A == 7 || __CORTEX_A == 9)
     TCD ( TC_CoreAFunc_IRQ,                        TC_COREAFUNC_IRQ                          ),
     TCD ( TC_CoreAFunc_FaultIRQ,                   TC_COREAFUNC_FAULTIRQ                     ),
     TCD ( TC_CoreAFunc_FPSCR,                      TC_COREAFUNC_FPSCR                        ),
@@ -155,7 +155,7 @@ static TEST_CASE TC_LIST[] = {
     TCD ( TC_CML1Cache_EnDisableICache,              TC_CML1CACHE_ENDISABLE_ICACHE          ),
     TCD ( TC_CML1Cache_EnDisableDCache,              TC_CML1CACHE_ENDISABLE_DCACHE          ),
     TCD ( TC_CML1Cache_CleanDCacheByAddrWhileDisabled, TC_CML1CACHE_CLEANDCACHEBYADDRWHILEDISABLED),
-  #elif defined(__CORTEX_A)
+  #elif defined(__CORTEX_A) && (__CORTEX_A == 5 || __CORTEX_A == 7 || __CORTEX_A == 9)
     TCD ( TC_CAL1Cache_EnDisable,                    TC_CAL1CACHE_ENDISABLE                 ),
     TCD ( TC_CAL1Cache_EnDisableBTAC,                TC_CAL1CACHE_ENDISABLEBTAC             ),
     TCD ( TC_CAL1Cache_log2_up,                      TC_CAL1CACHE_LOG2_UP                   ),

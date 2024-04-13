@@ -709,6 +709,7 @@ DEVICES = {
             '__L2C_PRESENT': '1U',
             'GIC_DISTRIBUTOR_BASE': '0x2C001000UL',
             'GIC_INTERFACE_BASE': '0x2C000100UL',
+            'GIC_REDISTRIBUTOR_BASE': '0x2C002000UL',
             'TIMER_BASE': '0x2C000600UL',
             'L2C_310_BASE': '0x2C0F0000UL',
             'IRQn_Type': 'int'
@@ -732,6 +733,7 @@ DEVICES = {
             '__L2C_PRESENT': '1U',
             'GIC_DISTRIBUTOR_BASE': '0x2C001000UL',
             'GIC_INTERFACE_BASE': '0x2C000100UL',
+            'GIC_REDISTRIBUTOR_BASE': '0x2C002000UL',
             'TIMER_BASE': '0x2C000600UL',
             'L2C_310_BASE': '0x2C0F0000UL',
             'IRQn_Type': 'int'
@@ -755,6 +757,7 @@ DEVICES = {
             '__L2C_PRESENT': '1U',
             'GIC_DISTRIBUTOR_BASE': '0x2C001000UL',
             'GIC_INTERFACE_BASE': '0x2C000100UL',
+            'GIC_REDISTRIBUTOR_BASE': '0x2C002000UL',
             'TIMER_BASE': '0x2C000600UL',
             'L2C_310_BASE': '0x2C0F0000UL',
             'IRQn_Type': 'int'
@@ -778,6 +781,7 @@ DEVICES = {
             '__L2C_PRESENT': '1U',
             'GIC_DISTRIBUTOR_BASE': '0x2C001000UL',
             'GIC_INTERFACE_BASE': '0x2C000100UL',
+            'GIC_REDISTRIBUTOR_BASE': '0x2C002000UL',
             'TIMER_BASE': '0x2C000600UL',
             'L2C_310_BASE': '0x2C0F0000UL',
             'IRQn_Type': 'int'
@@ -801,6 +805,7 @@ DEVICES = {
             '__L2C_PRESENT': '1U',
             'GIC_DISTRIBUTOR_BASE': '0x2C001000UL',
             'GIC_INTERFACE_BASE': '0x2C000100UL',
+            'GIC_REDISTRIBUTOR_BASE': '0x2C002000UL',
             'TIMER_BASE': '0x2C000600UL',
             'L2C_310_BASE': '0x2C0F0000UL',
             'IRQn_Type': 'int'
@@ -824,6 +829,7 @@ DEVICES = {
             '__L2C_PRESENT': '1U',
             'GIC_DISTRIBUTOR_BASE': '0x2C001000UL',
             'GIC_INTERFACE_BASE': '0x2C000100UL',
+            'GIC_REDISTRIBUTOR_BASE': '0x2C002000UL',
             'TIMER_BASE': '0x2C000600UL',
             'L2C_310_BASE': '0x2C0F0000UL',
             'IRQn_Type': 'int'

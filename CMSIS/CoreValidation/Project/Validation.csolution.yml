@@ -92,6 +92,30 @@ solution:
     #Target: CA9
     - type: CA9
 
+    #Target: CA35
+    - type: CA35
+
+    #Target: CA53
+    - type: CA53
+
+    #Target: CA55
+    - type: CA55
+
+    #Target: CA57
+    - type: CA57
+
+    #Target: CR4
+    - type: CR4
+
+    #Target: CR5
+    - type: CR5
+
+    #Target: CR7
+    - type: CR7
+
+    #Target: CR8
+    - type: CR8
+
   build-types:
     - type: none
       optimize: none

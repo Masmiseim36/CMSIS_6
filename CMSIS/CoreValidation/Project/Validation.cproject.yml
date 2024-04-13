@@ -33,6 +33,18 @@ project:
         - +CA5
         - +CA7
         - +CA9
+        - +CA35
+        - +CA53
+        - +CA55
+        - +CA57
+
+    # App: CMSIS-Core Validation for Cortex-R
+    - layer: ../Layer/App/Validation_Cortex-R/App.clayer.yml
+      for-context:
+        - +CR4
+        - +CR5
+        - +CR7
+        - +CR8
 
     #Target: CM0
     - layer: ../Layer/Target/CM0/Target.clayer.yml
@@ -163,3 +175,43 @@ project:
     - layer: ../Layer/Target/CA9/Target.clayer.yml
       for-context:
         - +CA9
+
+    #Target: CA535
+    - layer: ../Layer/Target/CA35/Target.clayer.yml
+      for-context:
+        - +CA35
+
+    #Target: CA53
+    - layer: ../Layer/Target/CA53/Target.clayer.yml
+      for-context:
+        - +CA53
+
+    #Target: CA55
+    - layer: ../Layer/Target/CA55/Target.clayer.yml
+      for-context:
+        - +CA55
+
+    #Target: CA57
+    - layer: ../Layer/Target/CA57/Target.clayer.yml
+      for-context:
+        - +CA57
+
+    #Target: CR4
+    - layer: ../Layer/Target/CR4/Target.clayer.yml
+      for-context:
+        - +CR4
+
+    #Target: CR5
+    - layer: ../Layer/Target/CR5/Target.clayer.yml
+      for-context:
+        - +CR5
+
+    #Target: CR7
+    - layer: ../Layer/Target/CR7/Target.clayer.yml
+      for-context:
+        - +CR7
+
+    #Target: CR8
+    - layer: ../Layer/Target/CR8/Target.clayer.yml
+      for-context:
+        - +CR8

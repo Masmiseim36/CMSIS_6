@@ -1,0 +1,42 @@
+layer:
+  type: Target
+  description: CR5 target components and files
+
+  packs:
+    - pack: ARM::Cortex_DFP
+
+  device: ARMCR5
+
+  components:
+    # [Cvendor::] Cclass [&Cbundle] :Cgroup [:Csub] [&Cvariant] [@[>=]Cversion]
+    - component: ARM::CMSIS:CORE
+    - component: Device:Startup
+    - component: Device:IRQ Controller:GIC
+
+  misc:
+    - for-compiler: IAR
+      Link: [--config generic_cortex.icf]
+
+  linker:
+    - script: RTE/Device/ARMCR5/ARMCR5_ac6.sct
+      for-compiler:
+        - AC6
+    - script: RTE/Device/ARMCR5/ARMCR5_gcc.ld
+      for-compiler:
+        - GCC
+    - script: RTE/Device/ARMCR5/ARMCR5_clang.ld
+      for-compiler:
+        - CLANG
+    - script: RTE/Device/ARMCR5/ARMCR5_iar.icf
+      for-compiler:
+        - IAR
+    - regions: RTE/Device/ARMCR5/mem_ARMCR5.h
+      for-compiler:
+        - AC6
+        - GCC
+        - CLANG
+
+  groups:
+    - group: FVP
+      files:
+        - file: ./model_config.txt
